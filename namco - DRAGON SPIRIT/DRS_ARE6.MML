@@ -6,7 +6,7 @@
 ; fade    : Time of fading out. (default: 5s)
 ; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
 
-; Version 1.01
+; Version 1.02
 
 ;*-*-* Initial setting
 
@@ -234,8 +234,8 @@ A   q8 l8 r2    ;Main (OPLL)
 B   q8 l8 r2    ;Lead (OPLL) 
 C   q8 l8 r2    ;Lead (OPLL) 
 D   q8 l8 r2    ;Lead (OPLL) 
-7   q8 l8 r2    ;Lead (OPLL) 
-8   q8 l8 r2    ;Lead (OPLL) 
+7   q8 l8 r2    ;Lead (SCC) 
+8   q8 l8 r2    ;Lead (SCC) 
 
 5   q8 l2 r2    ;Sub (SCC) 
 6   q8 l2 r2    ;Sub (SCC) 
@@ -285,11 +285,11 @@ A   feagba>r4
 A   [ r @18 @e04 h15,2,1,-2 v13 o6 \1 
 9A  a4d^ag4& g2.^>c& c1& c1
 9A  <ra4d^ag4& g2.^>c& c<b-agb-afd& | d2>d2< ]
-9   d2>d2< 
-A   d2>d4< 
+9   d2>d2<
+A   d2>d4<
 
 9   @19 @e03 h0,2,3,1 v15 o4 \0
-A   @19 @e31 h0,3,5,2 v13 o4 \-2 r4
+A   @19 @e31 h0,3,5,2 v13 o4 \0 r4
 9A  b-_>d16.&d32&d4.&d2& d1&
 9   d1 
 A   d2.
@@ -378,22 +378,22 @@ C   b-16b-16b-16b-16b-16r8.>c16c16c16c16c16r8. ]
 
 5   [8     @e12 v15 o5     d 
 6   [8 @27 @e13 v15 o6 @\5 d 
-5   @02 v14     o5 @e15 c8&c_<b4r8 
+5   @02 v13     o5 @e15 c8&c_<b4r8 
 6   @02 v12 @\0 o4 @e16 c8&c_<b4r8 
 
 5       @e12 v12 o5     d 
 6   @27 @e13 v12 o6 @\5 d 
-5   @02 v14     o5 @e15 c8&c_<b4r8 | 
+5   @02 v13     o5 @e15 c8&c_<b4r8 | 
 6   @02 v12 @\0 o4 @e16 c8&c_<b4r8 | 
 
 5   [2     @e12 v15 o5     d 
 6   [2 @27 @e13 v15 o6 @\5 d 
-5   @02 v14     o5 @e15 c8&c_<b4r8 ] ] 
+5   @02 v13     o5 @e15 c8&c_<b4r8 ] ] 
 6   @02 v12 @\0 o4 @e16 c8&c_<b4r8 ] ] 
 
 5       @e12 v15 o5     d 
 6   @27 @e13 v15 o6 @\5 d 
-5   @02 v14     o5 @e15 c8&c_<b8
+5   @02 v13     o5 @e15 c8&c_<b8
 6   @02 v12 @\0 o4 @e16 c8&c_<b8 
 
 5       @e12 v12 o4 
