@@ -52,7 +52,7 @@
 @e04 = { ,,ffe }                    ;Synthe Bell
 @e12 = { ,,@28.f@29.dcba98760=40 }  ;Vibraphone Release
 @e13 = { ,,f0 }                     ;Vibraphone Attack
-@e06 = { ,,@12.0@13.f }             ;Bass (OPLL)
+@e06 = { ,,@12.f@13.f }             ;Bass (OPLL)
 @e07 = { ,,\10@23.f\-5@24.c\0@25.a0=20 }    ;Bass (SCC)
 @e20 = { ,,fd0=50 }                 ;Bass Drum (OPLL)
 @e21 = { 2,1,/2.n5.f./3.n3.ed.n4.d.n2.c.n3.c.n1.b.n3.b.n1.b.n3.b.n1.a.n3.a.n1.a.n3.a.n1.9.n3.9.n2.9.n1.9.n2.9.n1.9.n2.8.n1.8.n2.8.n1./2.8./3.n1.8./3.n2./2.7./3.7./2.n1.66.n2.55.n1.55.n2.44.n0.44.n1.33.n0.33.n1.33.n0.22.n7.2222.0=150 } ;Bass Drum (PSG)
