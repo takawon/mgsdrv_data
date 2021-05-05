@@ -6,7 +6,7 @@
 ; fade    : Time of fading out. (default: 5s)
 ; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
 
-; Version 1.01
+; Version 1.02
 
 ;*-*-* Initial setting
 
@@ -324,7 +324,7 @@ D   <<b-2fb->de&  ef4.de^4 f1 e1
 C   @18 @e04 h30,2,3,3  v15 o5 \0 
 D   @18 @e31 h30,2,2,-1 v13 o5 @\1 r4 
 
-CD  e4g4cde4 d2^16&d_<d4.. >c_d&d4.a2 g2gab-4 >c_d&d&d_c&c&c2 <g4^a^4g4 b-2a2
+CD  e4g4cde4 d2^&d_<a&a_f.&f_d16 b-_>c+16&c+_d16&d4.a2 g2gab-4 >c_d&dd_c&c&c2 <g4^a^4g4 b-2a2
 
 C   f2g2 
 D   f2g4 
