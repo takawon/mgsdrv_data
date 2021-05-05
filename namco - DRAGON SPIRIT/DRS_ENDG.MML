@@ -41,8 +41,10 @@
 ;*-*-* Tone setting
 
 @e00 = { ,,@10.ed.@09.ffed=220 } ;Brass lead 1
-@e01 = { ,,@13.b@10.b@09.feb=150.7=200 } ;Brass lead 2
-@e02 = { ,,f:4.e:4.f }
+@e01 = { ,,@13.b@10.b@09.fffeb=150 } ;Brass lead 2 1
+@e02 = { ,,@13.b@10.b@09.fffeeeeb=150 } ;Brass lead 2 2
+@e03 = { ,,@13.b@10.b@09.fffeeeeeeeeb=150 } ;Brass lead 2 3
+@e04 = { ,,f:4.e:4.f }
 @e10 = { ,,f:20d=50f=50 }           ;Brass2
 @e11 = { ,,f:30d=50f=50 }           ;Brass2
 @e06 = { ,,@12.f@13.f }             ;Bass (OPLL)
@@ -319,7 +321,7 @@ C   <d4<fb->de4f& f2fg^4   g1 g1
 D   <<b-2fb->de&  ef4.de^4 f1 e1 
 
 
-C   @18 @e02 h30,2,3,3  v15 o5 \0 
+C   @18 @e04 h30,2,3,3  v15 o5 \0 
 D   @18 @e31 h30,2,2,-1 v13 o5 @\1 r4 
 
 CD  e4g4cde4 d2^16&d_<d4.. >c_d&d4.a2 g2gab-4 >c_d&d&d_c&c&c2 <g4^a^4g4 b-2a2
@@ -345,9 +347,9 @@ D   e4v0r4v14e4v0r4v14 e4v0r4v14e4v0r4v14 e1 <\0
 CD  v15 <c4c4c4c4& c1& c2..r
 
 
-9   @10 @e00 h35,2,2,2 v14 o5 e1 d4^e^4d4 
-A   @10 @e00 h35,2,2,2 v14 o5 c1 <b4^>c^4<b4 
-B   @10 @e00 h35,2,2,2 v14 o4 g1 g4^g^4g4 
+9   @10 @e00 h35,2,2,3 v14 o5 e1 d4^e^4d4 
+A   @10 @e00 h35,2,2,3 v14 o5 c1 <b4^>c^4<b4 
+B   @10 @e00 h35,2,3,2 v14 o4 g1 g4^g^4g4 
 
 9   d2a2    g1 >c1& c1       <b-2a2 
 A   b-2>f2  e1 g1   g4^a^4g4 f2f2 
@@ -383,7 +385,7 @@ B   f1&   f1       g1&  g1     f1&   f1
 
 9   e1& e2>ccrc <d1&  d2ag^4   e1& e2>ccr4 
 A   c1& c2ggrg  <b-1& b-2>fe^4 c1& c2ggr4 
-B   g1& g1      f1&   f1       f1& f1 
+B   g1& g1      f1&   f1       g1& g1 
 
 9   <d1&  d2fg^4   g1  g1 
 A   <b-1& b-2>de^4 f1  e1 
@@ -391,8 +393,8 @@ B   f1&   f1       >c1 c1
 
 
 9   @13 @e01 h35,2,2,3 v15 o5 [ e2g2   <b2>g2 
-A   @13 @e01 h35,2,2,3 v15 o5 [ c2e2   <g2>e2 
-B   @13 @e01 h35,2,2,3 v15 o5 [ <g2>c2 <d2>c2 
+A   @13 @e02 h35,2,2,3 v15 o5 [ c2e2   <g2>e2 
+B   @13 @e03 h35,2,2,3 v15 o5 [ <g2>c2 <d2>c2 
 
 9   d2a2    g1 >c1< g1 b-2f2  f2e2 
 A   <b-2>f2 e1 g1   e1 f2d2   d2c2 
@@ -414,9 +416,9 @@ B   f1&   f1  | >c1 c1 ]
 A   >f2f2 f2f4f4 e2e2 e2e2 
 B   >c2c2 c2c4c4 c2c2 c2c2 
 
-9   g2g2 g2g2 g1 <e4e4e4e4& e1& e1 
-A   e2e2 e2e2 e1 <g4g4g4g4& g1& g1 
-B   c2c2 c2c2 c1 <c4c4c4c4& c1& c1 
+9   g2g2 g2g2 g1 <e4e4e4e4& e1& e2..r
+A   e2e2 e2e2 e1 <g4g4g4g4& g1& g2..r
+B   c2c2 c2c2 c1 <c4c4c4c4& c1& c2..r
 
 ;*-*-* Bass *-*-*
 
