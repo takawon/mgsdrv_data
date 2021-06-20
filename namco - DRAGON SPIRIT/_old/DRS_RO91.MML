@@ -2,7 +2,7 @@
 ;
 ;	 ＤＲＡＧＯＮ　ＳＰＩＲＩＴ
 ;
-;	<< ROUND9-1 (DARK CASTEL) >>
+;	<< AREA9-1 (DARK CASTEL) >>
 ;		  (c)namco
 ;
 ;	Composed      細江 慎治
@@ -15,8 +15,8 @@
 #opll_mode	0
 #machine_id	2
 #lfo_mode	0
-#title	{	"namco  DRAGON SPIRIT -13- << ROUND9-1 (DARK CASTEL) >>         "
-		"By たかを"	}
+#title	{	"namco - DRAGON SPIRIT -13- << AREA 9-1 (DARK CASTEL) >>"
+            "MGS Arranged by Takawo"    }
 
 #tempo		113
 
@@ -209,4 +209,3 @@ G	r2.*m07*l07 [9 r4*l01r8r4*l01r8 ] *l01r4.r2 r4*l01r8r4*l01r8 ]
 #end
 
 ;*-*-* End Of MML [DRS_RO91.MUS]  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-                                                                                                                

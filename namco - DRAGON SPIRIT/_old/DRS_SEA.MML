@@ -15,8 +15,8 @@
 #opll_mode	0
 #machine_id	2
 #lfo_mode	0
-#title	{	"namco  DRAGON SPIRIT -01- << SEA >>                            "
-		"By たかを"	}
+#title	{	"namco - DRAGON SPIRIT -02- << SEA >>"
+            "MGS Arranged by Takawo"    }
 
 #tempo		151
 
@@ -145,4 +145,3 @@ G	*b01r*b01r*b04*m04*m04*m04*m04*m04*l01 ]
 #end
 
 ;*-*-* End Of MML [DRS_SEA .MUS]  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-                                                                                                                             

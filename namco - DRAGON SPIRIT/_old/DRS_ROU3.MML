@@ -2,7 +2,7 @@
 ;
 ;	 ＤＲＡＧＯＮ　ＳＰＩＲＩＴ
 ;
-;	    << ROUND3 (JUNGLE) >>
+;	    << AREA3 (JUNGLE) >>
 ;		  (c)namco
 ;
 ;	Composed      細江 慎治
@@ -15,8 +15,8 @@
 #opll_mode	0
 #machine_id	2
 #lfo_mode	0
-#title	{	"namco  DRAGON SPIRIT -06- << ROUND3 (JUNGLE) >>                "
-		"By たかを"	}
+#title	{	"namco - DRAGON SPIRIT -07- << AREA 3 (JUNGLE) >>"
+            "MGS Arranged by Takawo"    }
 
 #alloc	{	1 = 1200,
 		2 = 1200,
@@ -225,4 +225,3 @@ G	*b01r*m01r*b01*b01*m01r *b01r16*b04*m01r*b01*b01*m01r ]
 #end
 
 ;*-*-* End Of MML [DRS_ROU3.MUS]  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-          

@@ -2,7 +2,7 @@
 ;
 ;	 ＤＲＡＧＯＮ　ＳＰＩＲＩＴ
 ;
-;     << ROUND1 (THE PALEOZOIC AREA) >>
+;     << AREA1 (THE PALEOZOIC ERA) >>
 ;		  (c)namco
 ;
 ;	Composed      細江 慎治
@@ -15,8 +15,8 @@
 #opll_mode	0
 #machine_id	2
 #lfo_mode	0
-#title	{	"namco  DRAGON SPIRIT -02- << ROUND1 (THE PALEOZOIC AREA) >>    "
-		"By たかを"	}
+#title	{	"namco - DRAGON SPIRIT -03- << AREA 1 (THE PALEOZOIC ERA) >>"
+            "MGS Arranged by Takawo"    }
 
 #alloc	{	1 = 2100,
 		4 = 400,
@@ -371,4 +371,3 @@ G	*b01r*m01r*b01*t01*m01*l01 ] ]
 #end
 
 ;*-*-* End Of MML [DRS_ROU1.MUS]  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-                                                             
