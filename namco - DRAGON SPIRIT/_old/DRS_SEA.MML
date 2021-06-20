@@ -1,0 +1,148 @@
+;//////////////////////////////////////////
+;
+;	 ＤＲＡＧＯＮ　ＳＰＩＲＩＴ
+;
+;		  << SEA >>
+;		  (c)namco
+;
+;	Composed      細江 慎治
+;	MGS Arranged  By たかを
+;
+;//////////////////////////////////////////
+
+;*-*-*-*-* 初期設定 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+#opll_mode	0
+#machine_id	2
+#lfo_mode	0
+#title	{	"namco  DRAGON SPIRIT -01- << SEA >>                            "
+		"By たかを"	}
+
+#tempo		151
+
+#play_start
+#no_mgs
+;#track_status
+;#play_track
+;#disenable_mgsrc
+
+;*-*-*-*-* 音色設定 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+@e00 = { ,,ffeeddc }					;PIANO_ENV (OPLL)
+@e01 = { ,,efc0 }					;PIANO_ENV (SCC)
+@e02 = { ,,fd0=70 }					;BELL_ENV (SCC)
+@e03 = { ,,f:7.e:10.d:15.c:25.b:50.a:150.0 }		;KEYBORD_ENV  (SCC)
+@e04 = { ,,f:9.e:10.d:15.c:25.b:50.a:150.0 }		;KEYBORD_ENV' (SCC)
+@e05 = { ,,f:12.e:10.d:15.c:25.b:50.a:150.0 }		;KEYBORD_ENV''(SCC)
+@e06 = { ,,@12f@13f:3.e }				;BASS_ENV
+@e07 = { ,,fe:5.d }					;VIB_ENV
+@e20 = { 2,14,/2.n14.f./3.n14.f0=30 }			;BASS_DRUM
+@e21 = { 2,14,/2.n14.f./3.n14.ff.n16.e.n14.e.n16.e.n14.d.n16.d.
+	n14.d.n16.d.n14.c.n16.c.n14.c.n16.c.n14.b.n16.
+	b.15.b.n14.b.n15.b.n14.b.n15.a.n14.a.n13.a.n14.
+	/2.a./3.n13.a./3.n14./2.a./3.a./2.n12.88.n13.8
+	8.n12.88.n11.88.n12.88.n11.77.n10.77.n11.77.n10.77.
+	n7.7776.0=60 }					;TOMS
+
+
+@s03 = { c7cfd7df e7eff7ff 070f171f 272f373f		;SANKAKU (VOL.HALF)
+	 38302820 18100800 f8f0e8e0 d8d0c8c0 }
+
+@s04 = { 00102029 30373c3e 3f3e3c37 30292010		;SIN (VOL.HALF)
+	 00ffefdf d6cfc8c3 c0c3c8cf d6dfefff }
+
+@s05 = { 101d1000 e8fb0f18 e0be98ed 2d5e30e3		;KEYBORD
+	 c3a6ed1e 4e26e0c0 a0ed2050 2ae0c0f0 }
+
+@v15 = {						;HARP_SI
+;	TL FB
+	 0, 1,
+;	AR DR SL RR KL MT AM VB EG KR DT
+	15, 2, 1, 2, 1, 2, 0, 0, 0, 0, 0,
+	15, 0, 0, 1, 0, 9, 0, 0, 0, 1, 0 }
+
+
+;*-*-*-*-* MACRO設定  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+#macro_offset {	b = 00,
+		m = 20,
+		l = 30 }
+*00 = { q4o3v15a_<<a }			;BASS_DRUM #8
+*01 = { q6o1v12c }			;BASS_DRUM'#8
+*02 = { q8o3v9@e20c }			;BASS_DRUM #8 (PSG)
+*03 = { q4o3v15a_<d16 }			;BASS_DRUM #16
+*04 = { q6o1v12c16 }			;BASS_DRUM'#16
+*05 = { q8o3v9@e20c16 }			;BASS_DRUM #16 (PSG)
+*20 = { q1o4v15b-_<b- }			;ELEC_TOMS MIDDLE #8
+*21 = { q1o1v12c_<c }			;ELEC_TOMS MIDDLE'#8
+*22 = { q8o3v10@e21b-_<b- }		;ELEC_TOMS MIDDLE #8 (PSG)
+*23 = { q1o4v15b-_e-16 }		;ELEC_TOMS MIDDLE #16
+*24 = { q1o1v12c_<f16 }			;ELEC_TOMS MIDDLE'#16
+*25 = { q8o3v10@e21b-_e-16 }		;ELEC_TOMS MIDDLE #16 (PSG)
+*30 = { q1o4v15f_<c }			;ELEC_TOMS LOW #8
+*31 = { q1o1v12f_<c }			;ELEC_TOMS LOW'#8
+*32 = { q8o3v10@e21f_<c }		;ELEC_TOMS LOW #8 (PSG)
+
+;*-*-*-*-* MML設定  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+;*-*-* 初期設定 *-*-*
+
+9	@15     q8 so l1  v13 o5 r8	;KEYBORD          (OPLL)
+A	@15     q8 so l1  v13 o5 r8	;KEYBORD          (OPLL)
+B	@15     q8 so l1  v13 o4 r8	;KEYBORD          (OPLL)
+6	@5  @e3 q8    l1  v4  o5 r8 \-2	;KEYBORD          (SCC)
+7	@5  @e4 q8    l1  v4  o5 r8	;KEYBORD          (SCC)
+8	@5  @e5 q8    l1  v4  o4 r8 \2	;KEYBORD          (SCC)
+C	@2  @e0 q8    l16 v12 o7 r8	;ANALOG_PIANO     (OPLL)
+4	@3  @e1 q8    l16 v8  o5 r8 \2	;ANALOG_PIANO     (SCC)
+D	@11 @e7 q4 so l4  v13 o8 r8	;BELL             (OPLL)
+5	@4  @e2 q4    l4  v3  o8 r8	;BELL             (SCC)
+E	    @e6 q6    l8  v15 o3 r8	;BASS             (OPLL)
+F	y14,35 so l8 r8			;DRUMS            (OPLL)
+G	       so l8 r8			;DRUMS            (OPLL)
+1	          l8 r8			;DRUMS            (PSG)
+
+;*-*-* キーボード *-*-*
+
+69	h40,2,1,2r2 [0 f+2.f+8e8& e& e& e e2.e8d8& d1& d1& d1
+69	f+2.f+8e8& e& e& e e2.e8d8& d& d& d2l16def+gef+gal1 ]
+
+7A	h40,2,1,2r2 [0 d2.d8c8& c& c& c c2.c8<a8& a& a& a
+7A	>d2^8d4c8& c& c& c c2^8c4<a8& a& a& a> ]
+
+8B	h40,2,1,2r2 [0 a2.a8g8& g& g& g g2.g8f+8& f+& f+& f+
+8B	a2a4.g8& g& g& g g2g4.f+8& f+& f+& f+2l16f+gabgab>cl1< ]
+
+;*-*-* アナログピアノ *-*-*
+
+4C	r2 [0 d<dd>d<ddd>d<d>dd<d>dd<d>d d<dddd>ddd<dd>dd<dd>dd
+4C	d<dd>d<ddd>d<d>dd<d>dd<d>d d<dddd>ddd<dd>d>d<<dd>d>d< ]
+
+;*-*-* ベル *-*-*
+
+5D	r2 [0 dddd ]
+
+;*-*-* ベース *-*-*
+
+E	r4.(15d)15 d(15d)15d(15d)15d(15d)15d(15d)15 [0
+E	d(15d)15d(15d)15d16d16(15d)15d4 d(15d)15d(15d)15d(15d)15d(15d)15
+E	d(15d)15d(15d)15d(15d)15d4 d(15d)15d(15d)15d(15d)15d(15d)15 ]
+
+;*-*-* ドラム *-*-*
+
+F	*b03*m03*m03*m03*m00*m00 [0 [8 *b00r*b00r*b00r*b00r |
+F	*b00r*b00r*b00*b00*l00r ]
+F	*b00r*b00r*b03*m03*m03*m03*m03*m03*l00 ]
+
+G	*b04*m04*m04*m04*m01*m01 [0 [8 *b01r*b01r*b01r*b01r |
+G	*b01r*b01r*b01*b01*l01r ]
+G	*b01r*b01r*b04*m04*m04*m04*m04*m04*l01 ]
+
+1	*b05*m05*m05*m05*m02*m02 [0 [8 *b02r*b02r*b02r*b02r |
+1	*b02r*b02r*b02*b02*l02r ]
+1	*b02r*b02r*b05*m05*m05*m05*m05*m05*l01 ]
+
+#end
+
+;*-*-* End Of MML [DRS_SEA .MUS]  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+                                                                                                                             

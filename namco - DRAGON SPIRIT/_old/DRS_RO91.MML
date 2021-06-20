@@ -1,0 +1,212 @@
+;//////////////////////////////////////////
+;
+;	 ＤＲＡＧＯＮ　ＳＰＩＲＩＴ
+;
+;	<< ROUND9-1 (DARK CASTEL) >>
+;		  (c)namco
+;
+;	Composed      細江 慎治
+;	MGS Arranged  By たかを
+;
+;//////////////////////////////////////////
+
+;*-*-*-*-* 初期設定 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+#opll_mode	0
+#machine_id	2
+#lfo_mode	0
+#title	{	"namco  DRAGON SPIRIT -13- << ROUND9-1 (DARK CASTEL) >>         "
+		"By たかを"	}
+
+#tempo		113
+
+#play_start
+#no_mgs
+;#track_status
+;#play_track
+;#disenable_mgsrc
+
+;*-*-*-*-* 音色設定 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+@e02 = { ,,fd0=70 }					;BELL_ENV (SCC)
+@e03 = { ,,fdb0=90 }					;BELL_ENV2 (SCC)
+@e04 = { ,,dfe7=25 }					;SIN_ENV (SCC)
+@e06 = { ,,@12f@13f:3.e }				;BASS_ENV
+@e07 = { ,,fe:5.d }					;VIB_ENV
+@e20 = { 2,14,/2.n14.f./3.n14.f0=30 }			;BASS_DRUM
+@e21 = { 2,14,/2.n14.f./3.n14.ff.n16.e.n14.e.n16.e.n14.d.n16.d.
+	n14.d.n16.d.n14.c.n16.c.n14.c.n16.c.n14.b.n16.
+	b.15.b.n14.b.n15.b.n14.b.n15.a.n14.a.n13.a.n14.
+	/2.a./3.n13.a./3.n14./2.a./3.a./2.n12.88.n13.8
+	8.n12.88.n11.88.n12.88.n11.77.n10.77.n11.77.n10.77.
+	n7.7776.0=60 }					;TOMS
+@e22 = { 2,7,/2.n7.fc0 }				;HIGH_HAT
+
+
+@s03 = { c7cfd7df e7eff7ff 070f171f 272f373f		;SANKAKU (VOL.HALF)
+	 38302820 18100800 f8f0e8e0 d8d0c8c0 }
+
+@s04 = { 00102029 30373c3e 3f3e3c37 30292010		;SIN (VOL.HALF)
+	 00ffefdf d6cfc8c3 c0c3c8cf d6dfefff }
+
+@s05 = { 101d1000 e8fb0f18 e0be98ed 2d5e30e3		;KEYBORD
+	 c3a6ed1e 4e26e0c0 a0ed2050 2ae0c0f0 }
+
+@v15 = {						;BRASS
+;	TL FB
+	 5, 3,
+;	AR DR SL RR KL MT AM VB EG KR DT
+	15, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0,
+	15, 1, 2, 0, 0, 3, 0, 0, 0, 0, 0 }
+
+@v16 = {						;KANE
+;	TL FB
+	14, 0,
+;	AR DR SL RR KL MT AM VB EG KR DT
+	15, 2, 1, 2, 0, 1, 0, 0, 0, 0, 0,
+	15, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0 }
+
+@v17 = {						;SYNSE 3
+;	TL FB
+	 0, 0,
+;	AR DR SL RR KL MT AM VB EG KR DT
+	15, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0,
+	15, 0, 0, 2, 0,15, 0, 0, 0, 0, 1 }
+
+@v18 = {						;FLUTE
+;	TL FB
+	29, 0,
+;	AR DR SL RR KL MT AM VB EG KR DT
+	15,10, 1, 0, 0, 4, 0, 0, 0, 0, 0,
+	15, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0 }
+
+
+;*-*-*-*-* MACRO設定  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+#macro_offset {	b = 00,
+		t = 10,
+		m = 20,
+		l = 30 }
+
+*00 = { q4o3v15a_<<a }			;BASS_DRUM #8
+*01 = { q6o1v12c }			;BASS_DRUM'#8
+*02 = { q8o3v9@e20c }			;BASS_DRUM #8 (PSG)
+*03 = { q4o3v15a_<d16 }			;BASS_DRUM #16
+*04 = { q6o1v12c16 }			;BASS_DRUM'#16
+*05 = { q8o3v9@e20c16 }			;BASS_DRUM #16 (PSG)
+*10 = { q1o5v15d_<d }			;ELEC_TOMS HIGH #8
+*11 = { q1o1v12c_<c }			;ELEC_TOMS HIGH'#8
+*12 = { q1o3v10@e21d_<d }		;ELEC_TOMS HIGH #8 (PSG)
+*13 = { q1o5v15d_<g16 }			;ELEC_TOMS HIGH #16
+*14 = { q1o1v12c_<f16 }			;ELEC_TOMS HIGH'#16
+*15 = { q1o3v10@e21d_<g16 }		;ELEC_TOMS HIGH #16 (PSG)
+*16 = { q1o5v15d_c64d_<g16.. }		;ELEC_TOMS HIGH #64>16..
+*17 = { q1o1v12c_<b64c_<d16.. }		;ELEC_TOMS HIGH'#64>16..
+*18 = { q1o3v10@e21d_c64d_<g16.. }	;ELEC_TOMS HIGH #64>16.. (PSG)
+*20 = { q1o4v15b-_<b- }			;ELEC_TOMS MIDDLE #8
+*21 = { q1o1v12c_<c }			;ELEC_TOMS MIDDLE'#8
+*22 = { q8o3v10@e21b-_<b- }		;ELEC_TOMS MIDDLE #8 (PSG)
+*23 = { q1o4v15b-_e-16 }		;ELEC_TOMS MIDDLE #16
+*24 = { q1o1v12c_<f16 }			;ELEC_TOMS MIDDLE'#16
+*25 = { q8o3v10@e21b-_e-16 }		;ELEC_TOMS MIDDLE #16 (PSG)
+*26 = { q1o4v15b-_a-64b-_<b+16.. }	;ELEC_TOMS MIDDLE #64>16..
+*27 = { q1o1v12c_<b64c_<d16.. }		;ELEC_TOMS MIDDLE'#64>16..
+*28 = { q8o3v10@e21b-_a-64b-_<b+16.. }	;ELEC_TOMS MIDDLE #64>16.. (PSG)
+*30 = { q1o4v15f_<c }			;ELEC_TOMS LOW #8
+*31 = { q1o1v12f_<c }			;ELEC_TOMS LOW'#8
+*32 = { q8o3v10@e21f_<c }		;ELEC_TOMS LOW #8 (PSG)
+*33 = { q1o4v15f_<g16 }			;ELEC_TOMS LOW #16
+*34 = { q1o1v12f_<g16 }			;ELEC_TOMS LOW'#16
+*35 = { q8o3v10@e21f_<g16 }		;ELEC_TOMS LOW #16 (PSG)
+*36 = { q1o4v15f_d64f_<e16.. }		;ELEC_TOMS LOW #64>16..
+*37 = { q1o1v12f_d64f_<e16.. }		;ELEC_TOMS LOW'#64>16..
+*38 = { q8o3v10@e21f_d64f_<e16.. }	;ELEC_TOMS LOW #64>16.. (PSG)
+
+;*-*-*-*-* MML設定  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+;*-*-* 初期設定 *-*-*
+
+9	@11     q8 so l8  v12 o6 r8  \-1	;MERODY           (OPLL)
+A	@11     q8 so l8  v9  o6 r4  \1		;MERODY_DELAY     (OPLL)
+7	@4  @e4 q8    l8  v7  o6 r8		;MERODY'          (SCC)
+4	@5  @e3 q8    l8  v7  o7 r8  \1		;MERODY_1         (SCC)
+5	@5  @e3 q8    l8  v7  o7 r8  \1		;MERODY_2         (SCC)
+B	@11 @e7 q8 so l16 v12 o8 r8		;SUB              (OPLL)
+6	@3  @e2 q8    l16 v4  o8 r8		;SUB              (SCC)
+C	        q8    l8  v15 o3 r8  \-1	;EFFECT&MERODY    (OPLL)
+D	        q8    l8  v13 o3 r8  \2		;EFFECT&MERODY'   (OPLL)
+E	    @e6 q8    l16 v15 o2 r8		;BASS             (OPLL)
+F	y14,35 so l8 r8				;DRUMS            (OPLL)
+G	       so l8 r8				;DRUMS            (OPLL)
+1	          l8 r8				;DRUMS            (PSG)
+
+;*-*-* メロディ *-*-*
+
+9	[0 [34 d<g>cd<g16>c16d<f16g16>c ] ]
+A	[0 [31 d<g>cd<g16>c16d<f16g16>c ]
+A	d<g>cd<g16>c16d<f16g16>
+A	@3sf)5c+_d8.&d_c+8.&c+_d8.&d4..(5rso
+A	@11 d<g>cd<g16>c16d<f16g16>c ]
+
+7	[0 [3 r1 r1 r1 r1 r1 r1 r1 r1 r1 r1 ] r1 r1
+7	c+_d8.&d_c+8.&c+_d8.&d4.. r1 ]
+
+4	[0 [34 d4c4<g>d.<g.> ] ]
+5	r [0 [34 <g4>d.c.<f>c4 ] ]
+
+;*-*-* サブ *-*-*
+
+6	[0 r1 r1
+B	h0,10,0,1 [0 r1 r1
+6B	[20 d8d32d32dddddddc32d32dddc32d32d ]
+6B	r1 r1 r1 r1 r1 r1 r1 r1 r1 r1 
+6B	)3d8d32d32dddddddc32d32dddc32d32d(3 r1 ]
+
+;*-*-* エフェクト & メロディ *-*-*
+
+CD	[0
+CD	r1 r1 r1 r1 r4@15(g2.& g2.^.f16)
+CD	[ r1
+C	r2.@16(g4& g1& g2.g4)
+D	r2.@16\3(4>g4& g1& g2.g4<)4\3
+CD	/@17a-1& a-1& a-1& a-1 ]
+D	r\1(2
+CD	r1(2@18 g2.>fe& e2d16c16d^4& d2.^a16b-16 a2.^g16f16 g1& g1
+CD	<a-2.^>f16e-16 f2e-de-d16e-16
+C	c+_d8.&d2^4^16)2
+D	c+_d8.&d2^8^16)4\2
+CD	(@15<g1) r1 ]
+
+;*-*-* ベース *-*-*
+
+E	[0
+E	r1 r1 r1 r1 (15g4)15g2. r2.(15g4)15
+E	[[4 g(15g)15gr|r2(15g4)15 ] r4(15g8)15>fgcd<fg
+E	a-(15a-)15a-2.^(15a-)15 a-(15a-)15a-rr2r8.(15a-)15
+E	a-(15a-)15a-2.^(15a-)15 a-(15a-)15a-rr2. ]
+E	r1 r1 r1 r1 r1 r1 r1 r1 r1 r1 r1 r1 ]
+
+;*-*-* ドラム *-*-*
+
+F	[0
+F	r1 r1 r1 r1 r4*b00r8r2 r2.*b00r8
+F	[ *b00*b00r2r8.*b03 *b00*b00r2. *b00*b00r2r8.*b03
+F	*b00*b00r4.*m06*b03*b03*l06 [ *b00*b00r2r8.*b03 *b00*b00r2. ]]
+F	r2.*m06*l06 [9 r4*l00r8r4*l00r8 ] *l00r4.r2 r4*l00r8r4*l00r8 ]
+
+G	[0
+G	r1 r1 r1 r1 r4*b01r8r2 r2.*b01r8
+G	[ *b01*b01r2r8.*b04 *b01*b01r2. *b01*b01r2r8.*b04
+G	*b01*b01r4.*m07*b04*b04*l07 [ *b01*b01r2r8.*b04 *b01*b01r2. ]]
+G	r2.*m07*l07 [9 r4*l01r8r4*l01r8 ] *l01r4.r2 r4*l01r8r4*l01r8 ]
+
+1	[0
+1	r1 r1 r1 r1 r4*b02r8r2 r2.*b02r8
+1	[ *b02*b02r2r8.*b05 *b02*b02r2. *b02*b02r2r8.*b05
+1	*b02*b02r4.*m08*b05*b05*l08 [ *b02*b02r2r8.*b05 *b02*b02r2. ]]
+1	r2.*m08*l08 [9 r4*l02r8r4*l02r8 ] *l02r4.r2 r4*l02r8r4*l02r8 ]
+
+#end
+
+;*-*-* End Of MML [DRS_RO91.MUS]  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+                                                                                                                

@@ -1,0 +1,228 @@
+;//////////////////////////////////////////
+;
+;	 ＤＲＡＧＯＮ　ＳＰＩＲＩＴ
+;
+;	    << ROUND3 (JUNGLE) >>
+;		  (c)namco
+;
+;	Composed      細江 慎治
+;	MGS Arranged  By たかを
+;
+;//////////////////////////////////////////
+
+;*-*-*-*-* 初期設定 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+#opll_mode	0
+#machine_id	2
+#lfo_mode	0
+#title	{	"namco  DRAGON SPIRIT -06- << ROUND3 (JUNGLE) >>                "
+		"By たかを"	}
+
+#alloc	{	1 = 1200,
+		2 = 1200,
+		F = 1400,
+		G = 1200 }
+
+#tempo		151
+
+#play_start
+#no_mgs
+;#track_status
+;#play_track
+;#disenable_mgsrc
+
+;*-*-*-*-* 音色設定 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+@e02 = { ,,fd0=70 }					;BELL_ENV (SCC)
+@e03 = { ,,f:7.e:10.d:15.c:25.b:50.a:150.0 }		;KEYBORD_ENV  (SCC)
+@e04 = { ,,f:9.e:10.d:15.c:25.b:50.a:150.0 }		;KEYBORD_ENV' (SCC)
+@e05 = { ,,f:12.e:10.d:15.c:25.b:50.a:150.0 }		;KEYBORD_ENV''(SCC)
+@e06 = { ,,@12f@13f:3.e }				;BASS_ENV
+@e07 = { ,,fe:5.d }					;VIB_ENV
+@e20 = { 2,14,/2.n14.f./3.n14.f0=30 }			;BASS_DRUM
+@e21 = { 2,14,/2.n14.f./3.n14.ff.n16.e.n14.e.n16.e.n14.d.n16.d.
+	n14.d.n16.d.n14.c.n16.c.n14.c.n16.c.n14.b.n16.
+	b.15.b.n14.b.n15.b.n14.b.n15.a.n14.a.n13.a.n14.
+	/2.a./3.n13.a./3.n14./2.a./3.a./2.n12.88.n13.8
+	8.n12.88.n11.88.n12.88.n11.77.n10.77.n11.77.n10.77.
+	n7.7776.0=60 }					;TOMS
+@e22 = { 2,7,/2.n7.fc0 }				;HIGH_HAT
+
+
+@s04 = { 00102029 30373c3e 3f3e3c37 30292010		;SIN (VOL.HALF)
+	 00ffefdf d6cfc8c3 c0c3c8cf d6dfefff }
+
+@s05 = { 101d1000 e8fb0f18 e0be98ed 2d5e30e3		;KEYBORD
+	 c3a6ed1e 4e26e0c0 a0ed2050 2ae0c0f0 }
+
+@v15 = {						;HARP_SI
+;	TL FB
+	 0, 1,
+;	AR DR SL RR KL MT AM VB EG KR DT
+	15, 2, 1, 2, 1, 2, 0, 0, 0, 0, 0,
+	15, 0, 0, 1, 0, 9, 0, 0, 0, 1, 0 }
+
+
+;*-*-*-*-* MACRO設定  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+#macro_offset {	b = 00,
+		t = 10,
+		m = 20,
+		l = 30 }
+
+*00 = { q4o3v15a_<<a }			;BASS_DRUM #8
+*01 = { q6o1v12c }			;BASS_DRUM'#8
+*02 = { q8o3v9@e20c }			;BASS_DRUM #8 (PSG)
+*03 = { q4o3v15a_<d16 }			;BASS_DRUM #16
+*04 = { q6o1v12c16 }			;BASS_DRUM'#16
+*05 = { q8o3v9@e20c16 }			;BASS_DRUM #16 (PSG)
+*06 = { q8o3v12a_<<a }			;BASS_DRUM #8       (vol_mini)
+*07 = { q6o1v9c }			;BASS_DRUM'#8       (vol_mini)
+*08 = { q8o3v6@e20c }			;BASS_DRUM #8 (PSG) (vol_mini)
+*16 = { q1o5v15d_c64d_<g16.. }		;ELEC_TOMS HIGH #64>16..
+*17 = { q1o1v12c_<b64c_<d16.. }		;ELEC_TOMS HIGH'#64>16..
+*18 = { q1o3v10@e21d_c64d_<g16.. }	;ELEC_TOMS HIGH #64>16.. (PSG)
+*20 = { q1o4v15b-_<b- }			;ELEC_TOMS MIDDLE #8
+*21 = { q1o1v12c_<c }			;ELEC_TOMS MIDDLE'#8
+*22 = { q8o3v10@e21b-_<b- }		;ELEC_TOMS MIDDLE #8 (PSG)
+*23 = { q1o4v15b-_e-16 }		;ELEC_TOMS MIDDLE #16
+*24 = { q1o1v12c_<f16 }			;ELEC_TOMS MIDDLE'#16
+*25 = { q8o3v10@e21b-_e-16 }		;ELEC_TOMS MIDDLE #16 (PSG)
+*26 = { q1o4v15b-_a-64b-_<b+16.. }	;ELEC_TOMS MIDDLE #64>16..
+*27 = { q1o1v12c_<b64c_<d16.. }		;ELEC_TOMS MIDDLE'#64>16..
+*28 = { q8o3v10@e21b-_a-64b-_<b+16.. }	;ELEC_TOMS MIDDLE #64>16.. (PSG)
+*30 = { q1o4v15f_<c }			;ELEC_TOMS LOW #8
+*31 = { q1o1v12f_<c }			;ELEC_TOMS LOW'#8
+*32 = { q8o3v10@e21f_<c }		;ELEC_TOMS LOW #8 (PSG)
+*33 = { q1o4v15f_<g16 }			;ELEC_TOMS LOW #16
+*34 = { q1o1v12f_<g16 }			;ELEC_TOMS LOW'#16
+*35 = { q8o3v10@e21f_<g16 }		;ELEC_TOMS LOW #16 (PSG)
+*36 = { q1o4v15f_d64f_<e16.. }		;ELEC_TOMS LOW #64>16..
+*37 = { q1o1v12f_d64f_<e16.. }		;ELEC_TOMS LOW'#64>16..
+*38 = { q8o3v10@e21f_d64f_<e16.. }	;ELEC_TOMS LOW #64>16.. (PSG)
+
+;*-*-*-*-* MML設定  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+;*-*-* 初期設定 *-*-*
+
+9	@15     q8 so l8  v13 o5 r8		;KEYBORD          (OPLL)
+A	@15     q8 so l8  v13 o5 r8		;KEYBORD          (OPLL)
+B	@15     q8 so l8  v13 o4 r8		;KEYBORD          (OPLL)
+C	@15     q8 so l8  v12 o5 r8. \1		;KEYBORD_DELAY    (OPLL)
+4	@5  @e4 q8    l8  v3  o5 r8. \-1	;KEYBORD_DELAY    (SCC)
+6	@5  @e3 q8    l8  v4  o5 r8  \-2	;KEYBORD          (SCC)
+7	@5  @e4 q8    l8  v4  o5 r8		;KEYBORD          (SCC)
+8	@5  @e5 q8    l8  v4  o4 r8  \2		;KEYBORD          (SCC)
+D	@11 @e7 q6 so l16 v12 o6 r8		;BELL             (OPLL)
+5	@4  @e2 q6    l16 v2  o4 r8  \1		;BELL             (SCC)
+E	    @e6 q6    l8  v15 o2 (15c8)15	;BASS             (OPLL)
+F	y14,35 so l8 r8				;DRUMS            (OPLL)
+G	       so l8 r8				;DRUMS            (OPLL)
+1	          l8 r8				;DRUMS            (PSG)
+2	   @e22 q8    l16 v8 o3 r8		;DRUMS            (PSG)
+
+;*-*-* キーボード *-*-*
+
+9C	h40,2,1,2(5ree)ee)ee)e)2 [0
+6	h40,2,1,2(3reee)eeee)2 [0
+4	h40,2,1,2(4reee)ee)ee)2 [0
+469C	[ e2.ed& d1 | b-2.b-c rcrdrd4. ] f2.aa rarbrb4.& b1
+469C	[ e4.<g&g4>ed& d2.de | f4ferc4. e4.f16e16d2 ] ffrgra4. e4.d16e16d2
+469	c2.ed& d2.ef g1 ag4f&fede f1 g1 g1 >c1<
+C	@11q6(> c2.ed& d1 g1 ag4f&fede f1 g1 g1 >c1<< @15q8)
+469C	[ a4.c&c4ag& g2.ga | b-4b-arf4. a4.b-16a16g2 ] b-4b-arf4. a4.g16a16>c2<
+469C	a2d4ag& g2&gab-g& g2&g>dr<a& aag4a4fg arr2ag& g1>
+469C	cr2drd& d1 r2.<cd ]
+
+A	h40,2,1,2(5rc)cc)cc)cc)2 [0
+7	h40,2,1,2(4rcc)ccc)cc)2 [0
+7A	[ c2.c<b& b1 | >f2.f<a rarbrb4.> ] >d2.ff rfrgrg4.& g1
+7A	[ c4.<e&e4>c<b& b2.b>c | c4ccr<a4. >c2<b2 >] ccrdrf4. c4.<b16>c16<b2
+7A	a2.>c<b& b1> d1 fe4d&dc<b>c d1 d1 f1 g+1
+7A	[ f4.<a&a4>fe& e2.ef | f4ffrd4. f2e2 ] f4ffrd4. f2g2
+7A	f2<a4>fe& e2..e& e2&earf& ffe4f4de frr2fe& e1
+7A	gr2ara& a1 r2.<ab >]
+
+B	h40,2,1,2(5r)gg)gg)ggg)2 [0
+8	h40,2,1,2(4rgg)gggg)g)2 [0
+8B	[ g2.gg& g1 | >d2.d<f rfrgrg4. ] b-2.>dc rcrdrd4.& d1<
+8B	[ g4.c&c4gg& g2.gg | a4agrf4. g2g2 ] aarbr>c4.< g2g2
+8B	f2.gg& g1 b-1 ee4e&eeee b-1 b-1> c1 e1
+8B	[ c4.<f&f4>cc& c2.cc | d4dcr<a4.> c2c2 ] d4dcr<a4.> c2e2
+8B	d2<f4>dc& c2..c& c2&cfrd& ddc4d2 drr2dc& c1
+8B	er2frf& f1 r2.<ef ]
+
+;*-*-* ベル *-*-*
+
+5D	(6r8c8c8)c8c8)c8c8)c8)3 [0
+5D	[7 c8>>cc<<c8>>cc<<c8>>cc<<c8>>cc<< ]c8>>cc<<c8>>cc<<c8>>cc<<c8>>cc& c1
+5D	r1 r1 r1 r1 r1 r1 r1 r1
+5D	)2l8 <<c2.ed& d1 g1 ag4f&fede f1 g1 g1 >c1(2
+5D	l16 r1 r2c>c<ccc>c<cc r1 r2 ccccc8r8 r1 r2c>c<ccc>c<cc
+5D	r1 r2cccccccc r1 r1 r1 r1 r1 r1 r1 r1 r1 <]
+
+;*-*-* ベース *-*-*
+
+E	c(6cc)ccc)cc)4 [0
+E	[7 c>c<c>c<c>c<c>c< ] c>c<c>c<c>c<c>c& c1<
+E	[8 c>c<c>c<c>c<c>c< ][ f16f16f<f>f16f16f<f>f16f16f ]
+E	e16e16e<e>e16e16e<e>e16e16e ag4f&fe>d<e
+E	[ b-16b-16b-<b->b-16b-16b-<b->b-16b-16<b-> ]>
+E	[ c16c16c<c>c16c16c<c>c16c16<c> ]< 
+E	[ f4.c&c4f4 e4.c&c4e4 g4.d&d4g4 c4.g&g4c4 ]
+E	[ b-b-b-b-b-b-b-b- ] aaaaaaaa dddd>d16d16<d>d16d16<d b-r2(15c)15b-b-
+E	b-b-b-b-b-b-b-b- b-r4.(15c)15aaa dddd>d16d16<dd>d< r2(15c4)15ab ]
+
+;*-*-* ドラム *-*-*
+
+F	*b00[7*b06] [0
+F	[ *b00r*m00r*b00r*m00*b00 | *b00r*m00r*b00r16*b03*m00*b00 ]
+F	*b03*b00*b03*m00r*b00r*m03*m03*m00 *b00r*m00r*b00r*m00*b00
+F	*b00*b00*m00r*b00r*m00*b00 *b00r*m00r*b00r16*b03*m00*b00
+F	*b00*m03*m03*m00r[*b03*m03*m03*m03] *m03*m03*l03*l03*l00rr4*m00r
+F	[ *b00r*m00r*b00r*m00*b00 *b00r16*b03*m00r*b03*b00*b03*m00*b00
+F	*b00r*m00r*b00r*m00r *b00r16*b03*m00r*b03*b03*b03*b03*m00*b00 ]
+F	[ *b00r*m00r*b00*b03*b03*m00r | *b00r*m00r*b03*b03*b03*b03*m00*l00 ]
+F	*t06*t06r*m06r*m06*l06*l06 [4 *b00r*m00r*b00*b03*b03*m00r ]
+F	[8 *b00r4*m00*b00*b03*b03*m00r ][6 *b00r*m00r*b00*b00*m00r ]
+F	*b03*b03*b03*b03*m06*l06*b00*b00*m00r
+F	*b00r*m00r*b00*b00*m00r *b00r16*b03*m00r*b00*b00*m00r ]
+
+G	*b01[7*b07] [0
+G	[ *b01r*m01r*b01r*m01*b01 | *b01r*m01r*b01r16*b04*m01*b01 ]
+G	*b04*b01*b04*m01r*b01r*m04*m04*m01 *b01r*m01r*b01r*m01*b01
+G	*b01*b01*m01r*b01r*m01*b01 *b01r*m01r*b01r16*b04*m01*b01
+G	*b01*m04*m04*m01r[*b04*m04*m04*m04] *m04*m04*l04*l04*l01rr4*m01r
+G	[ *b01r*m01r*b01r*m01*b01 *b01r16*b04*m01r*b04*b01*b04*m01*b01
+G	*b01r*m01r*b01r*m01r *b01r16*b04*m01r*b04*b04*b04*b04*m01*b01 ]
+G	[ *b01r*m01r*b01*b04*b04*m01r | *b01r*m01r*b04*b04*b04*b04*m01*l01 ]
+G	*t07*t07r*m07r*m07*l07*l07 [4 *b01r*m01r*b01*b04*b04*m01r ]
+G	[8 *b01r4*m01*b01*b04*b04*m01r ][6 *b01r*m01r*b01*b01*m01r ]
+G	*b04*b04*b04*b04*m07*l07*b01*b01*m01r
+G	*b01r*m01r*b01*b01*m01r *b01r16*b04*m01r*b01*b01*m01r ]
+
+1	*b02[7*b08] [0
+1	[ *b02r*m02r*b02r*m02*b02 | *b02r*m02r*b02r16*b05*m02*b02 ]
+1	*b05*b02*b05*m02r*b02r*m05*m05*m02 *b02r*m02r*b02r*m02*b02
+1	*b02*b02*m02r*b02r*m02*b02 *b02r*m02r*b02r16*b05*m02*b02
+1	*b02*m05*m05*m02r[*b05*m05*m05*m05] *m05*m05*l05*l05*l02rr4*m02r
+1	[ *b02r*m02r*b02r*m02*b02 *b02r16*b05*m02r*b05*b02*b05*m02*b02
+1	*b02r*m02r*b02r*m02r *b02r16*b05*m02r*b05*b05*b05*b05*m02*b02 ]
+1	[ *b02r*m02r*b02*b05*b05*m02r | *b02r*m02r*b05*b05*b05*b05*m02*l02 ]
+1	*t08*t08r*m08r*m08*l08*l08 [4 *b02r*m02r*b02*b05*b05*m02r ]
+1	[8 *b02r4*m02*b02*b05*b05*m02r ][6 *b02r*m02r*b02*b02*m02r ]
+1	*b05*b05*b05*b05*m08*l08*b02*b02*m02r
+1	*b02r*m02r*b02*b02*m02r *b02r16*b05*m02r*b02*b02*m02r ]
+
+2	r1 [0
+2	r1 r1 r1 r1 r1 r1 r1 r1 r4r8ccc8ccr4
+2	[ r8ccr8ccr8ccr8rc r8crr8ccr8crr8rc r8ccr8ccr8ccr8cc r8crr8ccr8rrr8rc ]
+2	[ r8ccr8ccr8rrr8cc | r8ccr8ccr8rrr8rc ] r1 [4 r8ccr8ccr8rrr8cc ]
+2	l16 [4 rcccccrrrcrrrrcc rcccccrrr2 ] l8 [4 rcrcrrrc ]
+2	l16 r8ccr8ccr8rcr8c8 l8 rcrcrrrc 
+2	rr16r16rrrrrc rc16c16rcrrrc rc16r16rcrrrc l16]
+
+#end
+
+;*-*-* End Of MML [DRS_ROU3.MUS]  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+          
