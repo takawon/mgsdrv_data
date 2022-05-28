@@ -252,6 +252,9 @@
 
 ;*-*-* MML
 
+;236789ABC !    ;ベース&ドラム
+;45678 !    ;OPLL+PSG
+
 ;*-*-* Initialization *-*-*
 
 9           l16   r1 so ;Main (OPLL) 
