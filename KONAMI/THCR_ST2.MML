@@ -12,7 +12,7 @@
 #machine_id 2
 #lfo_mode	0
 #title  {   "KONAMI - THUNDER CROSS << Skywalker (2st. BGM) >>"
-            "MGS Arranged たかを"	}
+            "MGS Arranged by Takawo"    }
 
 #alloc {
 		0 = 700,
