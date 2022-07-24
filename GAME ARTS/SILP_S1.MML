@@ -1,0 +1,313 @@
+;[gain=1.0 name=SILP_S1 duration=300s fade=5s cpu=0 lpf=0]
+; The line above defines extra options, works only on msxplay.com
+; name    : Name of mml, use as the base download filename.
+; gain    : Volume gain. (default: 1.0)
+; duration: Length of the song. (default: 300s)
+; fade    : Time of fading out. (default: 5s)
+; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
+; lpf     : Low-pass filter. 0:off, 1:on (default: 0)
+
+; Version 1.00
+
+;*-*-* Initial setting
+
+#opll_mode  0
+#machine_id 2
+#lfo_mode   0
+#lfo_mode   0
+#title  {   "GAME ARTS - SILPHEED - 02 - << SILF OF WIND Ⅰ (AREA 01,05,15) >>"
+            "Composed by 五代響 / MGS Arranged by Takawo"    }
+
+#alloc {
+        0 = 200,
+        1 = 1500,
+        2 = 1100,
+        3 = 1000,
+        9 = 500,
+        A = 400,
+        B = 700,
+        C = 700,
+        D = 400,
+        E = 400,
+        F = 500,
+        G = 700,
+        H = 400 }
+
+#tempo 165
+
+;*-*-* Tone setting
+
+@e01 = { ,,@3.ff0=90 }          ;Bass (OPLL)
+@e02 = { ,,@2.a@8.f }           ;Bass (OPLL)
+@e05 = { ,,f.c0=7 }             ;Main Metallophone1 (OPLL)
+@e07 = { ,,@2.c.@0.f }          ;Main Synthesizer1 (OPLL)
+@e09 = { ,,bdf0=250 }           ;Main Synthesizer2 (OPLL)
+@e12 = { ,,f }                  ;Sub @10 #1 (OPLL)
+@e13 = { ,,@13.9@10f }          ;Sub @10 #1 (OPLL)
+@e15 = { ,,@13.7@6.dddfa=100 }    ;Sub Brass #1 (OPLL)
+@e16 = { ,,@5.a@6.edeef7=50.0=150 } ;Sub Brass #2 (OPLL)
+@e20 = { ,,@20.f }              ;Main Strings1 #1 (OPLL)
+@e21 = { ,,@20.f8=10 }          ;Main Strings1 #2 (OPLL)
+@e22 = { ,,@20.9abdf }          ;Main Strings1 Low #1 (OPLL)
+@e23 = { ,,@20.9abde8=10 }      ;Main Strings1 Low #2 (OPLL)
+
+@e31 = { ,,f }                  ;Clear Envelope
+
+@#15 = 0
+
+@v16 = {                        ;Metallophone1
+;   TL FB
+    37, 0,
+;   AR DR SL RR KL MT AM VB EG KR DT
+     8, 0, 0, 5, 2,10, 0, 0, 0, 1, 0,
+    15, 0, 0, 2, 0, 2, 0, 0, 0, 1, 0 }
+
+@v17 = {                        ;Synthesizer1
+;   TL FB
+    17, 7,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    15, 0, 0, 0, 3, 6, 0, 0, 0, 0, 0,
+    15, 0,15,15, 0, 1, 0, 0, 0, 1, 0 }
+
+@v18 = {                        ;Synthesizer2
+;   TL FB
+    34, 7,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    15, 1, 1, 0, 1, 2, 0, 0, 0, 1, 0,
+    15, 0, 0, 0, 1, 4, 0, 0, 0, 0, 0 }
+
+@v20 = {                        ;Strings1
+;   TL FB
+    15, 5,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    15, 1,15,15, 1, 2, 0, 0, 0, 0, 0,
+    15, 0,15,15, 0, 6, 0, 0, 0, 0, 0 }
+
+;*-*-* Macro settings
+
+#macro_offset { h = 00,
+                s = 10 }
+
+;Hi-hat
+*00 = { v11 o4 /2n0 c v6 o3 /1 }
+;Snare Drum
+*10 = { o4 /2s1m1000n5 c v6 o3 /1 }
+
+;*-*-* MML
+
+;*-*-* Initialization *-*-*
+
+9        q8 l16    v0c1 sf      ;Main (OPLL) 
+A        q8 l16    v0c1 sf      ;Main (OPLL) 
+F        q8 l16    v0c1 sf      ;Main (OPLL) 
+
+B        q8 l16    v0c1 sf      ;Sub (OPLL) 
+C        q8 l16    v0c1 sf      ;Sub (OPLL) 
+G        q8 l16    v0c1 sf      ;Sub (OPLL) 
+
+2        q8 l16 k0 v0c1         ;Chord 1 (PSG) 
+3        q8 l16 k0 v0c1         ;Chord 2 (PSG) 
+
+D   @e01 q8 l8  o3 v0c1 sf      ;Bass (OPLL) 
+E   @e02 q8 l8  o3 v0c1 sf      ;Bass (OPLL) 
+H   @e02 q8 l8  o3 v0c1 sf      ;Bass (OPLL) 
+
+1        q8 l16 k0 v0c1         ;Drums (PSG) 
+
+1239ABCDEFGH  r16
+
+;F : Bass Drum
+;G : Snare & Hi Hat
+;H : cymbal & Tom-tom
+
+;G track Volume setting
+;  v(0,1,2...,15) : Snare / @(14,13,12...,0,15) : Hi Hat
+;H track Volume setting
+;  v(0,1,2...,15) : cymbal / @(14,13,12...,0,15) : Tom-tom
+
+;*-*-* Main *-*-*
+
+9   @16 @e31 h17,2,1,4 v15 o4 \0 
+A   @16 @e05 h17,2,1,4 v13 o4 \1 
+F   @16 @e31 h17,2,1,4 v8  o4 \2 
+9A  r1 r1 r2..ef
+F   r1 r1 r2..efef 
+9A  g8g4g4>c4. <aa+aa+a8g4g8f4 f4.c4.f4 e4.d4.r8ef g8g4g4>c4.
+f   g8g4g4>c4. <aa+aa+a8g4g8f4 f4.c4.f4 e4.d4.efef g8g4g4>c4. 
+9A  dededrc4c<ca+4 >c8<a+4g+4.d+4g2.r8
+F   dededcc4c<ca+4 >c8<a+4g+4.d+4g2. 
+
+9   [0 @17 @e31 h17,2,1,5 v13 o5 \0 
+A   [0 @2  @e07 h17,2,1,5 v13 o6 \1 
+F   [0 @17 @e31 h17,2,1,5 v8  o5 \2 
+9A  ef
+F   efef 
+9A  g8g4g4>c4. <aa+aa+a8g4g8f4 f4.c4.f4 e4.d4.r8ef
+F   g8g4g4>c4. <aa+aa+a8g4g8f4 f4.c4.f4 e4.d4.efef 
+9A  g8g4g4>c4. dededrc4^<ca+4 >c8<a+4g+4.d+4 g1&
+F   g8g4g4>c4. dededcc4^<ca+4 >c8<a+4g+4.d+4 g1& 
+9A  g1& g2.r8
+F   g1& g2. 
+
+9   @18 @e31 h17,2,1,-4 v13 o5 \0 
+A   @18 @e09 h17,2,1,-4 v13 o6 \0 
+F   @18 @e31 h17,2,1,-4 v8  o5 \2 
+9A  e<g     e2.r8>e<g   e2.r8>e<g   d+1&
+F   e<g>e<g e2.>e<g>e<g e2.>e<g>e<g d+1& 
+9A  d+2.r8ed+  d2.c4 <a+2.r8>cd e1&
+F   d+2.ed+ed+ d2.c4 <a+2.>cdcd e1& 
+9A  e2.r8>e<g   e2.r8>e<g   e2.r8>e<g   d+1&
+F   e2.>e<g>e<g e2.>e<g>e<g e2.>e<g>e<g d+1& 
+9A  d+2.r8d+e  f1 a+2>d2 c1&
+F   d+2.d+ed+e f1 a+2>d2 c1& 
+9A  c2.r8
+F   c2. 
+
+9   @20 @e22 h20,2,1,5 v13 o5 \0 
+A   @20 @e23 h20,2,1,5 v12 o6 \0 
+F   @20 @e22 h20,2,1,5 v8  o5 \2 
+9   e @e20 f 
+A   e @e21 f 
+F   e @e20 f @e22 e @e20 f 
+9A  g8g4g4>c4. <aa+aa+a8g4g8f4 f4.c4.f4 e4.d4.r8
+F   g8g4g4>c4. <aa+aa+a8g4g8f4 f4.c4.f4 e4.d4. @e22 e @e20 f 
+9   @e22 e @e20 f g8g4g4>c4. 
+A   @e23 e @e21 f g8g4g4>c4. 
+F   @e22 e @e20 f g8g4g4>c4. 
+9A  dededr
+F   deded @e22 c @e20 
+9   @e22 c4 @e20 c<ca+4 >c8<a+4g+4.d+4 g2.r8 ] 
+A   @e23 c4 @e21 c<ca+4 >c8<a+4g+4.d+4 g2.r8 ] 
+F   @e22 c4 @e20 c<ca+4 >c8<a+4g+4.d+4 g2. ] 
+
+;*-*-* Sub *-*-*
+
+B   @16 @e31 h17,2,1,4 v15 o4 \0 
+C   @16 @e05 h17,2,1,4 v13 o4 \1 
+G   @16 @e31 h17,2,1,4 v8  o4 \2 
+BC  r1 r1 r2..cd
+G   r1 r1 r2..cdcd 
+BCG e8e4e4e4. f4d+4<a+4a+4 [4 >fc<a ] >fc<a8 [4 >d<bg ] >d<b>cd
+BCG e8e4e4e4. f8d8f8f8f8a+>cd4 c<ca+<a+>a+<a+>g+<g+>g+<g+>g+<g+>d+<d+>d+<d+ >d1
+
+B   [0 @10 @e12 h17,2,1,7 v12 o5 \0 
+C   [0 @10 @e13 h17,2,1,7 v11 o3 \0 
+G      @10 @e12 h17,2,1,7 v7  o5 \2 [0 
+BC  e8e4e4e4. f4d+4<a+4a+4 >[5 fc<a> ] r
+G   e8e4e4e4. f4d+4<a+4a+4 >[5 fc<a> ] d 
+BCG [4 d<bg> ] d<b>cd
+BC  e8e4e4e4. f8d8f8f8f8a+>cdr8. c<ca+<a+>a+<a+>g+<g+>g+<g+>g+<g+>d+<d+>d+<d+     >d2.r8
+G   e8e4e4e4. f8d8f8f8f8a+>cdr   c<c>c<ca+<a+>a+<a+>g+<g+>g+<g+>g+<g+>d+<d+>d+<d+ >d2. 
+
+B   @e15 h20,2,1,6  v13 o5 \0 
+C   @e16 h17,2,0,-1 v13 o6 \0 
+G   @e16 h20,2,1,6  v10 o6 \0 
+BC  b>c
+G   b>c<b>c 
+BC  d2.r8<b>c   d4r8<b>df2
+G   d2.<b>c<b>c d4<b>d<b>df2 
+
+B   @10 @e12 h17,2,1,7 v12 o6 \0 
+C   @10 @e13 h17,2,1,7 v11 o4 \0 
+G   @10 @e12 h17,2,1,7 v7  o6 \2 
+BCG [4 c<geg> ] [ c<geg> ] < [ a+geg ] [ [4 g+d+cd+ ] ]
+BCG [ [4 a+fdf ] ] > [3 [4 c<geg> ] ] [ c<geg> ] < [ a+geg ] [ [4 g+d+cd+ ] ]
+BCG [ [4 a+fdf ] ] > [4 c<geg> ] [3 c<geg> ] c<g
+
+B   @20 @e22 h20,2,1,5 v12 o5 \0 
+C   @20 @e23 h20,2,1,5 v12 o6 \0 
+G   @20 @e22 h20,2,1,5 v8  o5 \2 
+B   c @e20 d 
+C   c @e21 d 
+G   c @e20 d 
+B   e8e4e4e4. f4d+4<a+4a+4 [5 >fc<a ] r        > @e22 d< @e20 bg [3 >d<bg ] >d<b>cd 
+C   e8e4e4e4. f4d+4<a+4a+4 [5 >fc<a ] r        > @e23 d< @e21 bg [3 >d<bg ] >d<b>cd 
+G   e8e4e4e4. f4d+4<a+4a+4 [5 >fc<a ] > @e22 d d< @e20 bg [3 >d<bg ] >d<b>cd 
+B   e8e4e4e4. f8d8f8f8f8a+>cd8r8               @e22 c< @e20 ca+<a+>a+<a+>g+<g+>g+<g+>g+<g+>d+<d+>d+<d+> 
+C   e8e4e4e4. f8d8f8f8f8a+>cd8r8               @e23 c< @e21 ca+<a+>a+<a+>g+<g+>g+<g+>g+<g+>d+<d+>d+<d+> 
+G   e8e4e4e4. f8d8f8f8f8a+>cd8 @e22 c< @e20 c> @e22 c< @e20 ca+<a+>a+<a+>g+<g+>g+<g+>g+<g+>d+<d+>d+<d+> d2. 
+BC  d2.r4 ]
+G   @10 @e31 h17,2,1,7 v8  o4 \2 
+G   e8e8 ] 
+
+;*-*-* Chord 1 *-*-*
+
+2   v10 o3 q8 
+2   r1 r8e(5e8.)5e(5e8.)5e8(5e8)5e8 
+2   [2 e(5e)5e(5e8.)5e(5e8.)5e8(5e8)5e8 ] a+(5a+)5a+(5a+8.)5a+(5a+8.)5a+8(5a+8)5a+8 
+2   a(5a)5a(5a8.)5a(5a8.)5a8(5a8)5a8 d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 e(5e)5e(5e8.)5e(5e8.)5e8(5e8)5e8 
+2   d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 d+(5d+)5d+(5d+8.)5d+(5d+8.)5d+8(5d+8)5d+8 d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 
+2   [0 e(5e)5e(5e8.)5e(5e8.)5e8(5e8)5e8 a+(5a+)5a+(5a+8.)5a+(5a+8.)5a+8(5a+8)5a+8 a(5a)5a(5a8.)5a(5a8.)5a8(5a8)5a8 
+2   d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 e(5e)5e(5e8.)5e(5e8.)5e8(5e8)5e8 d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 
+2   d+(5d+)5d+(5d+8.)5d+(5d+8.)5d+8(5d+8)5d+8 [3 d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 ] 
+2   [ e(5e)5e(5e8.)5e(5e8.)5e8(5e8)5e8 ] [ d+(5d+)5d+(5d+8.)5d+(5d+8.)5d+8(5d+8)5d+8 ] 
+2   [ d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 ] [4 e(5e)5e(5e8.)5e(5e8.)5e8(5e8)5e8 ] 
+2   [ d+(5d+)5d+(5d+8.)5d+(5d+8.)5d+8(5d+8)5d+8 ] [ d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 ] 
+2   [ e(5e)5e(5e8.)5e(5e8.)5e8(5e8)5e8 ] 
+2   e(5e)5e(5e8.)5e(5e8.)5e8(5e8)5e8 a+(5a+)5a+(5a+8.)5a+(5a+8.)5a+8(5a+8)5a+8 a(5a)5a(5a8.)5a(5a8.)5a8(5a8)5a8 
+2   d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 e(5e)5e(5e8.)5e(5e8.)5e8(5e8)5e8 d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 
+2   d+(5d+)5d+(5d+8.)5d+(5d+8.)5d+8(5d+8)5d+8 d(5d)5d(5d8.)5d(5d8.)5d8(5d8)5d8 ] 
+
+;*-*-* Chord 2 *-*-*
+
+3   v10 o3 q8 
+3   r1 r8g(5g8.)5g(5g8.)5g8(5g8)5g8 
+3   [3 g(5g)5g(5g8.)5g(5g8.)5g8(5g8)5g8 ] 
+3   c(5c)5c(5c8.)5c(5c8.)5c8(5c8)5c8 b(5b)5b(5b8.)5b(5b8.)5b8(5b8)5b8 g(5g)5g(5g8.)5g(5g8.)5g8(5g8)5g8 
+3   f(5f)5f(5f8.)5f(5f8.)5f8(5f8)5f8 c(5c)5c(5c8.)5c(5c8.)5c8(5c8)5c8 b(5b)5b(5b8.)5b(5b8.)5b8(5b8)5b8 
+3   [0 [ g(5g)5g(5g8.)5g(5g8.)5g8(5g8)5g8 ] c(5c)5c(5c8.)5c(5c8.)5c8(5c8)5c8 
+3   b(5b)5b(5b8.)5b(5b8.)5b8(5b8)5b8 g(5g)5g(5g8.)5g(5g8.)5g8(5g8)5g8 f(5f)5f(5f8.)5f(5f8.)5f8(5f8)5f8 
+3   c(5c)5c(5c8.)5c(5c8.)5c8(5c8)5c8 [3 b(5b)5b(5b8.)5b(5b8.)5b8(5b8)5b8 ] 
+3   [ g(5g)5g(5g8.)5g(5g8.)5g8(5g8)5g8 ] [ c(5c)5c(5c8.)5c(5c8.)5c8(5c8)5c8 ] 
+3   [ f(5f)5f(5f8.)5f(5f8.)5f8(5f8)5f8 ] [4 g(5g)5g(5g8.)5g(5g8.)5g8(5g8)5g8 ] 
+3   [ c(5c)5c(5c8.)5c(5c8.)5c8(5c8)5c8 ] [ f(5f)5f(5f8.)5f(5f8.)5f8(5f8)5f8 ] 
+3   [4 g(5g)5g(5g8.)5g(5g8.)5g8(5g8)5g8 ] c(5c)5c(5c8.)5c(5c8.)5c8(5c8)5c8 
+3   b(5b)5b(5b8.)5b(5b8.)5b8(5b8)5b8 g(5g)5g(5g8.)5g(5g8.)5g8(5g8)5g8 
+3   f(5f)5f(5f8.)5f(5f8.)5f8(5f8)5f8 c(5c)5c(5c8.)5c(5c8.)5c8(5c8)5c8 b(5b)5b(5b8.)5b(5b8.)5b8(5b8)5b8 ] 
+
+;*-*-* Bass *-*-*
+
+D   v14 \0 
+E   v15 \0 
+H   v9  \2 
+ED  r1
+H   r1 c>c16< 
+DEH [ [4 c>c< ] ]
+DEH [0 [ [4 c>c< ] [4 d+>d+< ] [4 f>f< ] [4 g>g< ]
+DEH [4 c>c< ] [4 a+>a+< ] [4 g+>g+< ] [4 g>g< ] ]
+DEH [ [4 g>g< ] ] [ [4 c>c< ] ]
+DEH [ [4 g+>g+< ] ] [ [4 a+>a+< ] ]
+DEH [4 [4 c>c< ] ]
+DEH [ [4 g+>g+< ] ] [ [4 a+>a+< ] ]
+DEH [ [4 c>c< ] ] ]
+
+;*-*-* Drums *-*-*
+
+;1   r1 v10 /2n0 [ cr2... ]
+;1   cr8.cr2r8. [0 [3 r4cr2r8. ]
+;1   [4 r4cr2r8. ]
+;1   /2s1m1000n5 [4 [ r4cr8. ] ]
+;1   [4 [ r4cr8. ] ]
+;1   [4 [ r4cr8. ] ]
+;1   [4 [ r4cr8. ] ]
+;1   [4 [ r4cr8. ] ]
+;1   [4 [ r4cr8. ] ]
+;1   [ [ r4cr8. ] ] v10 /2n0 r4cr2r8. ]
+
+1   o3 q8 @\5 r8 
+1   r2..*h00v0e r8e(3e8.)3e(3e8.)3e8(3e8*h00e 
+1   e(3e)3e(3e8.)3e(3e8.)3e8(3e8*h00e e(3e*h00(3e8.)3e(3e8.)3e8(3e8)3e8 a+(3a+*h00(3a+8.)3a+(3a+8.)3a+8(3a+8)3a+8 
+1   a(3a*h00(3a8.)3a(3a8.)3a8(3a8)3a8 d(3d*h00(3d8.)3d(3d8.)3d8(3d8)3d8 e(3e*h00(3e8.)3e(3e8.)3e8(3e8)3e8 
+1   d(3d*h00(3d8.)3d(3d8.)3d8(3d8)3d8 d+(3d+*h00(3d+8.)3d+(3d+8.)3d+8(3d+8)3d+8 d(3d*h00(3d8.)3d(3d8.)3d8(3d8)3d8 
+1   [0 e(3e*s00(3e8.)3e(3e8.*s00e(3e8)3e8 a+(3a+*s00(3a+8.)3a+(3a+8.*s00a+(3a+8)3a+8 a(3a*s00(3a8.)3a(3a8.*s00a(3a8)3a8 
+1   d(3d*s00(3d8.)3d(3d8.*s00d(3d8)3d8 e(3e*s00(3e8.)3e(3e8.*s00e(3e8)3e8 d(3d*s00(3d8.)3d(3d8.*s00d(3d8)3d8 
+1   d+(3d+*s00(3d+8.)3d+(3d+8.*s00d+(3d+8)3d+8 [3 d(3d*s00(3d8.)3d(3d8.*s00d(3d8)3d8 ] 
+1   [ e(3e*s00(3e8.)3e(3e8.*s00e(3e8)3e8 ] [ d+(3d+*s00(3d+8.)3d+(3d+8.*s00d+(3d+8)3d+8 ] 
+1   [ d(3d*s00(3d8.)3d(3d8.*s00d(3d8)3d8 ] [4 e(3e*s00(3e8.)3e(3e8.*s00e(3e8)3e8 ] 
+1   [ d+(3d+*s00(3d+8.)3d+(3d+8.*s00d+(3d+8)3d+8 ] [ d(3d*s00(3d8.)3d(3d8.*s00d(3d8)3d8 ] 
+1   [ e(3e*s00(3e8.)3e(3e8.*s00e(3e8)3e8 ] 
+1   e(3e*h00(3e8.)3e(3e8.)3e8(3e8)3e8 a+(3a+*h00(3a+8.)3a+(3a+8.)3a+8(3a+8)3a+8 a(3a*h00(3a8.)3a(3a8.)3a8(3a8)3a8 
+1   d(3d*h00(3d8.)3d(3d8.)3d8(3d8)3d8 e(3e*h00(3e8.)3e(3e8.)3e8(3e8)3e8 d(3d*h00(3d8.)3d(3d8.)3d8(3d8)3d8 
+1   d+(3d+*h00(3d+8.)3d+(3d+8.)3d+8(3d+8)3d+8 d(3d*h00(3d8.)3d(3d8.)3d8(3d8)3d8 ] 
+
+#end
