@@ -22,10 +22,11 @@
 ;
 ; 備考
 ; 各音源の音量調整が可能な環境やカートリッジなど
-; ・MSX SOUND ENHANCER (音源カートリッジ)
 ; ・SX-1 Mini (MSX2+互換機)
+; ・MSX SOUND ENHANCER (MSX用 音源カートリッジ)
+; ・MDPlayer (エミュレート音源部)
 ; ・MAmidiMEmo (エミュレート音源部)
-; ・Carnivore2 (多機能カートリッジ) 調整可能?
+; ・Carnivore2 (MSX用 多機能カートリッジ) 調整可能?
 
 #opll_mode 1
 #tempo 120
