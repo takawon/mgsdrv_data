@@ -1,0 +1,322 @@
+;[gain=1.0 name=ISH_MAIN duration=300s fade=5s cpu=0 lpf=0]
+; The line above defines extra options, works only on msxplay.com
+; name    : Name of mml, use as the base download filename.
+; gain    : Volume gain. (default: 1.0)
+; duration: Length of the song. (default: 300s)
+; fade    : Time of fading out. (default: 5s)
+; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
+; lpf     : Low-pass filter. 0:off, 1:on (default: 0)
+
+; Version 1.0
+
+;*-*-* Initial setting
+
+#opll_mode  0
+#machine_id 2
+#lfo_mode   0
+#title  {   "namco - The Return of ISHTAR - 03 - << メインテーマ >>"
+            "MGS Arranged by Takawo"    }
+
+#alloc {    0 = 850,
+            1 = 250,
+            4 = 100,
+            5 = 250,
+            6 = 200,
+            7 = 150,
+            9 = 250,
+            A = 200,
+            B = 150,
+            C = 100,
+            D = 100,
+            E = 250,
+            F = 150,
+            G = 100,
+            H = 100 }
+
+#tempo      120
+
+;*-*-* Tone setting
+
+@e00 = { ,,efa=5.0=150 }            ;Bass (OPLL)
+@e01 = { ,,f }                      ;Bass (OPLL)
+@e02 = { ,,@23.f@24f@25edc.0=30 }   ;Bass (SCC)
+
+@e05 = { ,,y2,0.y3,6.a.y2,7.d.y2,9.y3,7.fffe.y2,8.e:15.y2,9.e:15.y2,10.e:15.y2,11.e:15.y2,12.e:15.y2,13.e:15.y2,14.e:15.y2,15.e }      ;Brass 2 (OPLL)
+@e15 = { ,,0:7.5aeffeeed }                              ;Brass 2' (OPLL)
+@e07 = { ,,@5.e@6f@7.a7600005676:10@8.6:10@9.0=100 }    ;Brass 2 (SCC)
+@e21 = { ,,y2,0.a.y2,2.d.y2,6.f.y2,9.ff.y2,10.ee.y2,11.e:15.y2,12.e }   ;Brass 3 (OPLL)
+@e09 = { ,,y2,0.ff.y2,6.f }                             ;Brass 3' (OPLL)
+@e03 = { ,,\0@5.e@6f@7.a7600005676:10@8.6:10@9.\1.6 }   ;Brass 3 (SCC)
+@e10 = { ,,@10ef@11.fe@12.ed:10.c:10.4=100 }            ;Brass 3' (SCC)
+@e06 = { ,,y2,3.e.y2,7.f.y2,8.f.y2,9.f:9.y2,10.f }      ;Brass 4 (OPLL)
+@e16 = { ,,ef }                                         ;Brass 4' (OPLL)
+@e18 = { ,,                     y2,9.f:9.y2,10.f }      ;Brass 4^ (OPLL)
+@e08 = { ,,@10de@11.fb@12.86=30 }                       ;Brass 4 (SCC)
+
+@e11 = { ,,@11.a@4fffe:5.d }            ;Sub 1 (OPLL)
+@e19 = { ,,acefffe:120.d }              ;Sub 1' (OPLL)
+@e12 = { ,,@10fedc@1.0=30 }             ;Vibraphone 1(OPLL)
+@e17 = { ,,@0f@6fc=150 }                ;Vibraphone 1' (OPLL)
+@e13 = { ,,@11b@1f }                    ;Vibraphone 2 (OPLL)
+@e14 = { ,,@3f@13fe }                   ;Flute (OPLL)
+
+@e20 = { 2,5,f.n3.e.n1.a.n0.a.5=5.0=10 }      ;High Hat (PSG)
+
+@e31 = { ,,f }  ;Clear Envelope
+
+@s05 = { ED05140A FEFA0E44 6E7F7B70 66646159
+         3CFB9B85 5C7F8797 908D8883 808DB4E5 }  ;Main 1 Brass (morphing 1)
+
+@s06 = { EB021408 F8F1FD26 58787E72 68656562
+         512DDA80 AE7F378A A5AEA59A 919EB9E6 }  ;Main 1 Brass (morphing 2)
+
+@s07 = { FBF8EFEA E5F20E3A 5054473F 3D3A2F1E
+         04C79580 097FBDD8 C4CBB6A8 AAB6D3EC }  ;Main 1 Brass (morphing 3)
+
+@s08 = { E6E0D7D4 DBEF0F2E 3C373029 241C0FFA
+         D6A280B4 347FE8EB DBCABCB1 ADBED2E5 }  ;Main 1 Brass (morphing 4)
+
+@s09 = { B1AAA8B1 BDDCF80B 12100B02 F9F1E3D2
+         AD8A80A3 E53A7F31 02DEBEB2 ABB1B6B4 }  ;Main 1 Brass (morphing 5)
+
+@s10 = { 1D27495C 606F7A7B 7F7E7A76 644F3E16
+         E5C7A99F 3B64AE80 CE94C2AD C5D2E0EE }  ;Main 2 Brass (morphing 1)
+
+@s11 = { FB0B2127 303A4340 433F3428 11FADCAC
+         8B80B33B 7F40C1DC CABABEBC C9CDD6E8 }  ;Main 2 Brass (morphing 2)
+
+@s12 = { FC091B27 333C4447 49463C2E 1B04EFCC
+         A3808CE6 747FC7DE CFBEC8C1 C8CED7E5 }  ;Main 2 Brass (morphing 2)
+
+@s23 = { 30707F80 907F7088 C8207F7F 6078507F
+         707F3078 E02080B0 80988098 80888098 }  ;Bass Guitar (morphing 1)
+
+@s24 = { 30707F80 907F7088 C8207F7F 7F7F7F7F
+         7F7F7878 E0208888 80808080 808080D8 }  ;Bass Guitar (morphing 2)
+
+@s25 = { 38687F40 F0D08090 607F40C8 908098D8
+         10305868 68583818 F8E0C0A8 9898A8D8 }  ;Bass Guitar (morphing 3)
+
+@#15 = 0
+
+@v16 = {                        ;Brass 2
+;   TL FB
+     8, 7,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    10,15, 5, 1, 0, 2, 0, 0, 0, 0, 0,
+     7, 0,15, 5, 0, 2, 0, 0, 1, 0, 0 }
+
+@v17 = {                        ;Brass Double
+;   TL FB
+     8, 7,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    10,15, 5, 0, 0, 2, 0, 0, 0, 0, 0,
+     7, 0,15, 5, 0, 2, 0, 0, 1, 0, 0 }
+
+@v18 = {                        ;Brass 3
+;   TL FB
+    20, 7,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    10,12, 5, 0, 0, 2, 0, 0, 0, 0, 0,
+    10, 0,15, 5, 0, 2, 0, 0, 1, 0, 0 }
+
+;*-*-* Macro settings
+
+#macro_offset { h = 00 }
+
+;a1  = a%192
+;a2  = a%96
+;a4  = a%48
+;a8  = a%24
+;a16 = a%12
+;a32 = a%6
+;a64 = a%3
+
+;a3  = a%64
+;a6  = a%32
+;a12 = a%16
+;a24 = a%8
+;a48 = a%4
+
+;High Hat
+;#8
+*00 = { /3n0 s1m100 a%2 v10 @e20 a%22 } ;1
+;#24
+*01 = { /3n0 s1m100 a%2 v10 @e20 a%6 } ;1
+
+;*-*-* MML
+
+;*-*-* Initialization *-*-*
+
+9            q8 l8  o4 v0r2 sf              ;Main 1 (OPLL) 
+E            q8 l8  o4 v0r2 sf              ;Main 1 Delay (OPLL) 
+5            q8 l8  o4 v0r2 k1              ;Main 1 (SCC) 
+A            q8 l8  o4 v0r2 sf              ;Main 2 (OPLL) 
+6            q8 l8  o4 v0r2 k1              ;Main 2 (SCC) 
+B            q8 l8  o3 v0r2 sf              ;Main 3 (OPLL) 
+7            q8 l8  o3 v0r2 k1              ;Main 3 (SCC) 
+
+C            q8 l1  o4 v0r2 sf              ;Sub 1 (OPLL)
+D            q8 l1  o5 v0r2 sf              ;Sub 2 (OPLL)
+F            q8 l1  o5 v0r2 sf              ;Sub 3 (OPLL)
+
+G   @10 @e00 q8 l24 o3 v0r2 v12 sf          ;Bass (OPLL) 
+H   @13 @e01 q8 l24 o3 v0r2 v15 sf          ;Bass (OPLL) 
+4       @e02 q8 l24 o2 v0c2 v8  k0          ;Bass (SCC) 
+
+;F : Bass Drum
+;G : Snare & Hi Hat
+;H : cymbal & Tom-tom
+
+;G track Volume setting
+;  v(0,1,2...,15) : Snare / @(14,13,12...,0,15) : Hi Hat
+;H track Volume setting
+;  v(0,1,2...,15) : cymbal / @(14,13,12...,0,15) : Tom-tom
+
+1            q8 l16 o6 v0r2                 ;Drums (PSG) 
+
+;*-*-* Main *-*-*
+
+9   [0 @16 y2,0 y3,6 @e05 v15 
+E   [0 @16 y2,0 y3,6 @e15 v10 \0 @\10 
+5   [0               @e07 v11  @\0
+E   e 
+95E eg>c
+95E <a1& a2>c4d4
+95  e1& e2&(4e64r16..)4<eg>c
+E   e1& e2<e            eg>c 
+95E <a1& a2>d.e16f4
+95E fe16d16c2.& c2^<
+9   @17 @e21 v15
+E                @\0 \1
+5       @e03 v11 @\0
+95E eg>c
+95E <a1& a2>c4d4
+95  e1& e2&(4e64r16..)4<eg>c
+E   e1& e2<e            eg>c 
+95E <a1& a2>d.e16f4
+95E fe16d16c2.& c2v0
+9   @18 @e06 y2,3 c v14 
+E   @18 @e16 y2,3 c v10 @\0 \1 
+5       @e08      c v9  @\-12
+95E <eg>c
+9   d.e16f2.& f2g+4> @e18 c+4
+5E  d.e16f2.& f2g+4>      c+4
+95E <fe16d16e2.& e2v0e
+9   @e06 v14
+E   v10
+5   v9
+95E <eg>c
+95E d.e16f2. d+2g+2
+9   g+ @e18 g16f16e2.& e2v0e<
+5   g+      g16f16e2.& e2v0e<
+E   g+      g16f16e2.& e2<
+95E r64. ]
+
+A6  [0 r4.
+A6  r1 r1
+A6  r1 r1
+A6  r1 r1
+A6  r1 r2^
+A   @17 @e09 v14 @\20 
+6       @e10 v10 @\-5 h0,0,10,1  @p3
+A6  eg>c
+A6  <a1& a2>c4d4
+A6  e1& e2&(4e64r16..)4<eg>c
+A6  <a1& a2>
+A   @\0
+6   @\-5
+A6  f.g16a4
+A6  ag16f16e2.& e2v0e
+A   @18 @e16 @\0   v14
+6       @e08 @\-12 v9  hf
+A6  <ceg
+A6  a.b16>c2.& c2f4g+4
+A6  c4c2.& c2v0c
+A   v14
+6   v9
+A6  <ceg
+A6  a.b16>c2. c2d+2
+A6  c4c2.& c2v0c<
+A6  r64. ]
+
+B7  [0 r4.
+B7  r1 r1
+B7  r1 r1
+B7  r1 r1
+B7  r1 r1
+B7  r1 r1
+B7  r1 r1
+B7  r1 r1
+B7  r1 r2r
+B   @18 @e16 \0    v14 
+7       @e08 @\-12 v9 
+B7  g>ce
+B7  f.g16a2.& a2>c+4f4
+B7  <g4g2.& g2v0g
+B   v14 
+7   v9 
+B7  <g>ce
+B7  f.g16a2. g+2>c2
+B7  <g4g2.& g2v0g<
+B7  r64. ]
+
+;*-*-* Sub *-*-*
+
+C   [0 @11 @e11 v0 
+C   a4. v15 
+C   [4 a& a | 
+C   g& g ] 
+C   g& g2^8v0g4. 
+C   v15 
+C   a& a2>(2c+2)2 
+C   c& c 
+C   <a g+2>c2 
+C   <g4v0g8 
+C   @0 @e17 v10 o6 
+C   g+4g16f16e4& e2^8v0<<
+C   r64. ]
+
+D   [0 @11 @e11 v0 
+D   f4. v15 
+D   [4 f& f | 
+D   e& e ] 
+D   e8v0e16 
+D   @11 @e13 v15 o6
+D   e16g4g4f16e16d16f16e8.d16e4.v0e4. 
+D   v14
+D   <f& f 
+D   e& e 
+D   f d+2d+2 
+D   e& e2v0e8
+D   r64. ]
+
+F   [0 @3 @e19 @\15 v0
+F   f4. v15 
+F   [4 f& f | 
+F   e& e ]
+F   @11 @e13 v15 @\0 o6 l16
+F   c8.g>c4<a+4agfa g8.fg4.v0g4. 
+F   @3 @e19 v15 @\15 o4 l1
+F   a& a2>(2c+2)2 
+F   c& c 
+F   <a g+2>c2 
+F   @10 @e12 v15 @\0 o6 l16
+F   r4.g+4gfe8 
+F   @3 @e14 v15 o7 
+F   g+8 g+8gfe4v0e8 l1 <<
+F   r64. ]
+
+;*-*-* Bass *-*-*
+
+GH4 [0 r4.
+GH4 [23 [3 c8ccc ] cccc8 ] [ c8ccc ] c8
+GH4 r64. ]
+
+;*-*-* Rhythm *-*-*
+
+1   [0 r4. 
+1   [23 [3 *h00*h01*h01*h01 ] *h01*h01*h01*h00 ] [ *h00*h01*h01*h01 ] *h00
+1   r64. ]
+
+#end
