@@ -1,0 +1,265 @@
+;[gain=1.0 name=DRS_OMAK duration=300s fade=5s cpu=0]
+; The line above defines extra options, works only on msxplay.com
+; name    : Name of mml, use as the base download filename.
+; gain    : Volume gain. (default: 1.0)
+; duration: Length of the song. (default: 300s)
+; fade    : Time of fading out. (default: 5s)
+; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
+
+; Version 1.00
+
+;*-*-* Initial setting
+
+#opll_mode  0
+#machine_id 2
+#lfo_mode   0
+#title  {   "namco - DRAGON SPIRIT -24- << OMAKE >>"
+            "MGS Arranged by Takawo"    }
+
+#alloc {
+        0 = 1250,
+        1 = 300,
+        4 = 150,
+        5 = 150,
+        6 = 200,
+        7 = 150,
+        8 = 150,
+        9 = 150,
+        A = 150,
+        B = 150,
+        C = 150,
+        D = 150,
+        E = 150,
+        F = 150,
+        G = 100,
+        H = 100 }
+
+#tempo      114
+
+;*-*-* Tone setting
+
+@e01 = { ,,y2,31.y3,13.ey2,20.fy2,22.f:5y2,21.e:5y2,20.e:5y2,19.e:5y2,18.y3,13.e:10y2,17.y3,12.d:7y2,16.y3,11.d:5y2,15.y3,10.d:5.y3,9.d:5.y3,8.c } ;Main (OPLL)
+@e02 = { ,,efc:15.b } ;Main (OPLL)
+@e03 = { ,,@1.f@2.b@3.8:5@4.7:5@5.6:10@6.3=10.3:10@7.3:7.0=100 } ;Main (SCC)
+@e04 = { ,,@10f@1f } ;Glockenspiel (OPLL)
+@e05 = { ,,@18f@19d@20a=13@21.8=20@22.8:10.@21.7:10.@22.7:10.@21.6:10.0=100 } ;Glockenspiel (SCC)
+@e06 = { ,,@12.f@13.f } ;Bass (OPLL)
+@e07 = { ,,\10@23.f\-5.f@24.e\0cba9@25.6=5@26.3=5.0=60 } ;Bass (SCC)
+@e10 = { ,,@10f@11d@12dc@13cc@14bba:4@15.9:4.8:4@16.7:4.4=30.2=80 } ;Synthesizer 1 (SCC)
+@e11 = { ,,   f   d   dc   cb   bba:4   .9:4.8:4   .7:4.4=30.2=80 } ;Synthesizer 1 (SCC)
+
+@e23 = { ,,fea } ;Tom (OPLL)
+@e24 = { ,,@0.f.@4.f.@8.f.@14.f } ;Tom (OPLL)
+@e25 = { 2,15,fn0.ea0=10 } ;Tom (PSG)
+
+@e31 = { ,,f } ;Clear Envelope
+
+@s01 = { 12 5C 48 5C AB 90 C6 66 FD 3F 8A DD 14 39 27 56 5A 12 3F 37 7F 5A 18 80 86 10 88 9F 80 9D C6 DD } ;Main (morphing 1)
+
+@s02 = { 24 6B 5D 6F 90 BD A2 6F 3F 66 85 C2 B0 22 34 5F 6D 1F 76 58 E0 7F 42 80 C4 19 AB 9B 89 AE D9 F0 } ;Main (morphing 2)
+
+@s03 = { 27 65 6A 6E 95 B4 A6 71 5E 6E 80 AB 98 0F 1B 4F 65 03 7F 67 B7 7A 5E 80 CA 43 8A 9A FC 98 E4 FC } ;Main (morphing 3)
+
+@s04 = { 32 75 5A 7F 13 96 81 C8 5A 78 40 84 90 9D EF 1C 56 37 2F 7C 38 A0 7C 43 80 4E E7 8A B7 DA CE FF } ;Main (morphing 4)
+
+@s05 = { 22 53 73 4A 76 99 AC 87 22 7F 76 4A 87 92 8E C1 F2 33 D6 25 78 0E B7 7A EB 80 5A D1 92 30 E1 02 } ;Main (morphing 5)
+
+@s06 = { 30 49 7D 3B 68 39 91 80 86 75 7F 75 C2 88 9D 88 A7 E1 11 C4 51 66 A1 3B 77 80 BA 58 97 B2 3B FA } ;Main (morphing 6)
+
+@s07 = { 29 65 53 76 7D 61 0C 1F BB 85 89 D1 7F 77 73 EB C6 C1 80 88 A1 BA A8 1B 03 A7 29 44 B3 F6 50 E4 } ;Main (morphing 7)
+
+@s10 = { 0D 7F 51 3F 26 2D 20 0F 15 0C 04 0F 01 01 04 FE FF F3 EF F4 E7 F0 DE D5 DA C8 B0 A9 96 80 94 E7 } ;Synthesizer 1 (morphing 1)
+
+@s11 = { 04 7F 69 4E 35 3B 20 15 1D 0B 15 06 09 03 FF F8 F6 EE F5 E9 DF E7 D4 D6 C6 B6 AF A0 8A 80 9C F6 } ;Synthesizer 1 (morphing 2)
+
+@s12 = { 05 61 7F 6D 5D 51 36 39 27 18 20 0B 05 0F FC F9 FD F1 EA F1 E6 DB CF D2 BF B1 A5 93 84 80 9F F9 } ;Synthesizer 1 (morphing 3)
+
+@s13 = { 05 4A 6E 7F 78 6D 5F 50 41 32 2D 1E 13 14 05 FA FD F0 E2 DF D3 C8 C1 B2 A5 97 88 82 80 92 B9 FA } ;Synthesizer 1 (morphing 4)
+
+@s14 = { 04 31 60 77 7F 77 6D 5E 50 43 39 29 1E 16 08 FD F9 ED DF D8 CA BE B1 A5 99 8C 82 80 86 9B C6 FB } ;Synthesizer 1 (morphing 5)
+
+@s15 = { 03 22 56 74 7F 7D 74 68 5B 50 42 35 27 1C 0C FE FA EC E1 D6 CA BB AF A4 97 8B 82 80 89 A2 C8 FC } ;Synthesizer 1 (morphing 6)
+
+@s16 = { FF 24 4D 68 7A 7F 7A 71 65 59 4C 3D 2E 20 12 00 F4 EA D9 CE C2 B0 A3 98 8E 85 80 83 8F A7 CB F4 } ;Synthesizer 1 (morphing 7)
+
+@s18 = { 12 1A 10 1B 2F 40 29 16 02 F8 EA DE E6 E0 D8 F4 12 24 13 0A 10 1A 0B F8 E4 D4 C9 C0 D2 EA E6 F6 } ;Glockenspiel (morphing 1)
+
+@s19 = { 06 2A 40 36 33 3E 40 2E 14 07 F8 E0 D6 EA F9 EE E5 10 28 2E 13 0B 06 FA EA E0 D9 CE C0 D9 F8 02 } ;Glockenspiel (morphing 2)
+
+@s20 = { 18 29 20 2A 3A 40 2C 23 11 FA E5 E4 F8 F0 DD D1 EC 0E 04 F4 F9 FB F5 E8 E8 E3 C6 C0 EC 01 F8 F6 } ;Glockenspiel (morphing 3)
+
+@s21 = { 1C 2E 40 1E 2E 36 2F 1E 0E 12 13 0E 18 22 18 0F 12 2E 24 F6 E4 EA E6 D5 C6 C0 C8 CD DD F3 0A 0E } ;Glockenspiel (morphing 4)
+
+@s22 = { 0E 1E 36 40 2E 20 1D 19 0C FE F4 F0 F2 FC 0A 1C 16 12 20 22 07 F0 E2 D7 CC C0 C3 C8 D2 E0 F6 06 } ;Glockenspiel (morphing 5)
+
+@s23 = { 5F 7F 5D 05 EE A7 8C 85 83 80 82 80 A0 AC CE 0A F8 2C 4E 49 75 6E 71 6B 42 18 E7 B3 9B 83 8A B8 } ;Bass (morphing 1)
+
+@s24 = { 2D 54 6C 7F 7C 7D 6E 65 30 28 1C 00 26 17 1C 17 E3 EE E5 D6 FA E2 D4 CD 9D 8C 80 82 82 8E 9F D2 } ;Bass (morphing 2)
+
+@s25 = { 24 50 6D 7B 7F 7B 72 64 41 2D 1B 0C 20 19 1B 12 F3 EF E8 E2 ED ED E1 CB AF 90 87 80 84 8B 9D CC } ;Bass (morphing 3)
+
+@s26 = { 24 47 6C 7B 7F 7D 72 65 47 33 22 15 19 13 0F 08 F9 F5 F0 E8 EC E3 D6 C3 A9 96 86 80 84 8F A5 D0 } ;Bass (morphing 4)
+
+@#15 = 0
+
+@v19 = {                        ;Synthe Brass
+;   TL FB
+    20, 5,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    15, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1,
+    15,15, 0, 1, 0, 2, 0, 0, 0, 1, 0 }
+
+;*-*-* Macro settings
+
+#macro_offset { t = 00 }
+
+;a1  = a%192
+;a2  = a%96
+;a4  = a%48
+;a8  = a%24
+;a16 = a%12
+;a32 = a%6
+;a64 = a%3
+
+;a3  = a%64
+;a6  = a%32
+;a12 = a%16
+;a24 = a%8
+;a48 = a%4
+
+;Bass Drum
+;#4
+*00 = { o4 so v15a%2v14a%2v10a%2v9a%2v7a%2v5a%2v0a16 sf r8 } ;F
+*01 = { o1 v5 @e23e8r8 } ;G
+*02 = { o3 sf d8 so r8 } ;H
+*03 = { o3 /1n0 s1m50 a%2 v7 @e25 a_<a%46 } ;1
+
+;*-*-* MML
+
+;*-*-* Initialization *-*-*
+
+9   @19 @e01 q8 l4 h35,1,1,4 r2 ;Main (OPLL) 
+A   @10 @e02 q8 l4 h35,1,1,4 r2 ;Main (OPLL) 
+5   @1  @e03 q8 l4 h35,1,1,4 r2 ;Main (SCC) 
+
+7   @10 @e10 q8 l4 r2   ;Lead (SCC) 
+8   @10 @e11 q8 l4 r2   ;Lead (SCC) 
+
+B   @10 @e04 q8 l4 r2   ;Sub (OPLL) 
+C   @10 @e04 q8 l4 r2   ;Sub (OPLL) 
+D   @10 @e04 q8 l4 r2   ;Sub (OPLL) 
+6   @18 @e05 q8 l4 r2   ;Sub (SCC) 
+
+E   @12 @e06 q8 l4 v15 o3 v0c2v15   ;Bass (OPLL) 
+4   @23 @e07 q8 l4 v14 o2 k0 r2     ;Bass (SCC) 
+
+;F : Bass Drum
+;G : Snare & Hi Hat
+;H : cymbal & Tom-tom
+
+;G track Volume setting
+;  v(0,1,2...,15) : Snare / @(14,13,12...,0,15) : Hi Hat
+;H track Volume setting
+;  v(0,1,2...,15) : cymbal / @(14,13,12...,0,15) : Tom-tom
+
+F   y14,35 so q1 l8 r2 v15      ;Drums (OPLL) 
+G          so q1 l8 r2 v11 @0   ;Drums (OPLL) 
+H          sf q1 l8 r2 @15 @e24 ;Drums (OPLL) 
+1             q8 l8 r2 v8       ;Drums (PSG) 
+
+;*-*-* Main *-*-*
+
+9A5 [0
+9   o5 v14 ho 
+A   o5 v15 ho \1 
+5   o4 v13 ho @\-10 
+9A5 [ e2ga e.d8c2
+9A5 e4d8c8<b8>c16<b16a8b8 | >c1 ]
+9A5 >c1& c1
+9A5 [6 r1 ]
+9A5 [ e4d8c8<b8>c16<b16a8b8 | >c1 ]
+9   @1  @e04 o7 v13 h25,1,2,4 
+A   @1  @e04 o4 v13 hf 
+5   @18 @e05 o6 v8  h25,1,2,1
+9   g1  @19 @e01 h35,1,1,4
+A   a+1 @10 @e02
+5   g1  @1  @e03 h35,1,1,4
+9A5 ]
+
+;*-*-* Lead *-*-*
+
+7   [0 o4 v13 @\-10
+7   [ g2b2 a.g8f2 
+7   f2g2 c1 ] 
+7   >cc<bb aabb 
+7   >c1 <a2b2 
+7   >c2<bb >agf2& 
+7   f1 
+7   < [ f2g2 | c1 ] 
+7   r16g+2... ] 
+
+8   [0 o5 v13 @\-10
+8   [ c2d2 c.<b8a2 
+8   a2b2 e1> ] 
+8   [8 e ] 
+8   e1 d2e2 
+8   e2dg >c<ba2& 
+8   a1 
+8   < [ a2b2 | e1 ] 
+8   r32> @e10 c2.... @e11 ] 
+
+;*-*-* Sub *-*-*
+
+B   [0 o7 v12 
+B   [ rega ee8d8c2 
+B   ed8c8<b8>c16<b16a8b8 >c1 ] 
+B   [8 e ] 
+B   edcd8e8 dc<b>e8d8 
+B   e2dg >c<ba2& 
+B   a1 
+B   [ ed8c8<b8>c16<b16a8b8 | >c1 ] 
+B   r16>g2... ] 
+
+C   [0 o6 v12 
+C   [ c8gg8<b8>b8<b8>b8 <a8>a<g8f2 
+C   f2g2 >c<gc2> ] 
+C   < [ a2g2 f2g2 ] 
+C   a2a2 g2g2& 
+C   g1 
+C   [f2g2 | >c<gc2 ] 
+C   >g+1 ] 
+
+D   [0 o7 v12 
+D   [ rcdd cc8<b8a2 
+D   >c<b8a8g8a16g16f8g8 g1> ] 
+D   cc<bb aabb 
+D   >cb<ab8>c8 <aagc8d8 
+D   >c2<b>d agf2& 
+D   f1 
+D   [ c<b8a8g8a16g16f8g8 | g1> ] 
+D   r32>c2.... ] 
+
+6   [0 o5 v10 @\-10 
+6   [ c8g8>e8<g8>g8<b8>a8<b8> e8<a8>e8d8c2 
+6   ed8c8<b8>c16<b16a8b8 >c<<gc2> ] 
+6   >cc<bb aabb
+6   >cbcd8e8 dc<b>e8d8
+6   e2dg >c<ba2& 
+6   a1 
+6   [ ed8c8<b8>c16<b16a8b8 | >c<<gc2>> ] 
+6   g+32>c32g2... ] 
+
+;*-*-* Bass *-*-*
+
+4E  [0 [ c.c8<b.b8 a.g8f2 f.f8g.g8 >c<gc2> ]
+4E  < [3 a.a8g.g8 f.f8 | g.g8 ] g2& g1
+4E  f.f8g.g8 >c<gc2 f.f8g.g8 >b-1 ]
+
+;*-*-* Drums *-*-*
+
+F   [0 [16 r4*t00 ] [23 *t00 ] r4 r1 [6 r4*t00 ] r1 ] 
+G   [0 [16 r4*t01 ] [23 *t01 ] r4 r1 [6 r4*t01 ] r1 ] 
+H   [0 [16 r4*t02 ] [23 *t02 ] r4 r1 [6 r4*t02 ] r1 ] 
+1   [0 [16 r4*t03 ] [23 *t03 ] r4 r1 [4 r4*t03 ] t100 [ r4*t03 ] t80 r1 t114 ] 
+
+#end
