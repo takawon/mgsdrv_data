@@ -1,0 +1,24 @@
+;[gain=1.0 name=HYDLI1_1 duration=300s fade=5s cpu=0 lpf=0 loop=5]
+; The line above defines extra options, works only on msxplay.com
+; name    : Name of mml, use as the base download filename.
+; gain    : Volume gain. (default: 1.0)
+; duration: Maxiumum play duration. (default: 300s)
+; fade    : Time of fading out. (default: 5s)
+; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
+; lpf     : Low-pass filter. 0:off, 1:on (default: 0)
+; loop    : Number of global loops. (default: 2).
+;           Note that duration takes precedence over loop.
+
+#opll_mode 0
+#tempo 135
+#title {"T&E SOFT - HYDLIDE << Main BGM >>"}
+
+1   v15 o5 
+1   [0 d8e4.^32r8r32d8e4.^32r8d8e32r32e32r32e32r32e32r32r8g8r64.e4.^32r8 
+1   <g16.>c4.r16c16.d4^16.r16d16.e16.c2^16r8 
+1   <g16.>c4.r16c16.d4^16.r16d16.e8.f16g2r8 ] 
+
+2   v15 o4 
+2   [0 b8>c4.^32r8r32<b8>c4.^32r8<b8>c32r32c32r32c32r32c32r32r8c8r64.c4.^32r8 
+2   <g16.g4.r16g16.b4^16.r16b16.>c16.<g2^16r8 
+2    g16.g4.r16g16.b4^16.r16b16.>c8.d16e2r8< ]
