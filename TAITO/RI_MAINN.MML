@@ -1,0 +1,249 @@
+;[gain=1.0 name=RI_MAINN duration=300s fade=5s cpu=0 lpf=0]
+; The line above defines extra options, works only on msxplay.com
+; name    : Name of mml, use as the base download filename.
+; gain    : Volume gain. (default: 1.0)
+; duration: Maxiumum play duration. (default: 300s)
+; fade    : Time of fading out. (default: 5s)
+; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
+; lpf     : Low-pass filter. 0:off, 1:on (default: 0)
+; loop    : Number of global loops. (default: 2).
+;           Note that duration takes precedence over loop.
+
+; Version 1.00
+
+;*-*-* Initial setting
+
+#opll_mode  0
+#machine_id 2
+#lfo_mode   0
+#title  {   "TAITO - RAINBOW ISLANDS - 03 - << MAIN THEME >> (NES US version - Arcade-style Arrange)"
+            "MGS Arrange by Takawo"    }
+
+#alloc {
+        0 = 200,
+        1 = 100,
+        2 = 1,
+        3 = 1,
+        4 = 1,
+        5 = 1,
+        6 = 1,
+        7 = 1,
+        8 = 1,
+        9 = 500,
+        A = 500,
+        B = 500,
+        C = 800,
+        D = 800,
+        E = 800,
+        F = 1100,
+        G = 1100,
+        H = 1100 }
+
+#tempo      183
+;#tempo      90
+
+;*-*-* Tone setting
+
+@e01 = { ,,fd8=5.4=50 } ;Lead 1 (OPLL)
+@e02 = { ,,f:2.e:4.ed:3.4=50 } ;Lead 2 (OPLL)
+@e05 = { ,,@10.d@11.f9=7.d=7.5=5.9=5.5=5 } ;Sub High Long (OPLL)
+@e06 = { ,,@10.d@11.fe6=8.9=4.2=5 } ;Sub High Short (OPLL)
+@e07 = { ,,@10.d@11.ece=5.8=5.a=5.4=5.8=5.3=5 } ;Sub Low Long (OPLL)
+@e08 = { ,,@10.d@11.edbd=4.6=3.2=8 } ;Sub Low Short (OPLL)
+@e16 = { ,,f:2.e:2.a=7.0=150 } ;Bass (OPLL)
+@e17 = { ,,@12.f@13.f } ;Bass (OPLL)
+
+@e30 = { ,,0 } ;Compulsion 0db
+@e31 = { ,,f } ;Clear Envelope
+
+@#15 = 0
+
+@v16 = {                        ;Synth Bell
+;   TL FB
+    37, 7,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    15, 0,15, 2, 0, 4, 0, 0, 1, 0, 0,
+    15, 2,13,15, 0, 1, 0, 0, 1, 0, 0 }
+
+;*-*-* Macro settings
+
+;a1  = a%192
+;a2  = a%96
+;a4  = a%48
+;a8  = a%24
+;a16 = a%12
+;a32 = a%6
+;a64 = a%3
+
+;a3  = a%64
+;a6  = a%32
+;a12 = a%16
+;a24 = a%8
+;a48 = a%4
+
+;*-*-* MML
+
+;*-*-* Initialization *-*-*
+
+;1   s0m200 o7 r2 [0 a4c4c4c4 ]
+
+9   @16 @e01 q8 l12 o7 r2 sf h0,1,2,4       ;Lead 1 (OPLL) 
+A   @16 @e02 q8 l12 o6 r2 sf h0,1,2,4       ;Lead 2 (OPLL) 
+B   @16 @e01 q8 l12 o7 r2 sf h0,3,0,-2 @\25 ;Lead 1 Delay (OPLL)
+C   @16 @e02 q8 l12 o6 r2 sf h0,3,0,-2 @\25 ;Lead 2 Delay (OPLL)
+
+D   @11 @e05 q8 l%3 o5 r2 sf h0,1,2,2       ;Sub 1 (OPLL)
+E   @11 @e05 q8 l%3 o5 r2 sf h0,1,2,-3 \1   ;Sub 2 (OPLL)
+F   @11 @e05 q8 l%3 o5 r2 sf h0,1,2,3  \-1  ;Sub 3 (OPLL)
+
+G   @10 @e16 q8 l%3 o3 v0r2 v15             ;Bass (OPLL) 
+H   @12 @e17 q8 l%3 o3 v0r2 v15             ;Bass (OPLL) 
+
+;*-*-* Lead *-*-*
+
+*10 = { v15 } ;Volume
+*11 = { v15 } ;Volume
+
+BC  r32.
+9ABC    [0
+
+9B  [ [ *10e8.&e_g+16g+v0g+*10bv0b6*10bav0a*10g+     v0g+4*10f+4bv0b*10bg+v0g+*10f+
+AC  [ [ *11b8.&b_>d+16d+v0d+*11f+v0f+6*11f+ev0e*11d+ v0d+4*11c+4f+v0f+*11f+d+v0d+*11c+<
+
+9B  e4d+4c+4ev0e*10b&   | b2^6g+4f+&
+AC  b4a+4g+4bv0b*11>f+& | f+2^6d+4c+&
+
+9B  f+2^6f+ev0e*10f+   g+v0g+6*10av0a*10bv0b6*10<bv0b6*10>c+
+AC  c+2^6c+<bv0b*11>c+ d+v0d+6*11ev0e*11f+v0f+6*11<f+v0f+6*11g+>
+
+9B  g+4b4a4g+4  f+v0f+6^6*10b2^    ]
+AC  d+4f+4e4d+4 c+v0c+6^6*11f+2^ < ]
+
+9B  b2^6g+4f+&
+AC  f+2^6d+4c+&
+
+9B  f+2^6f+ev0e*10f+   g+v0g+6*10av0a*10bv0b6*10<bv0b6*10>c+     |
+AC  c+2^6c+<bv0b*11>c+ d+v0d+6*11ev0e*11f+v0f+6*11<f+v0f+6*11g+ > |
+
+9B  f+4c+4d+4f+v0f+*10e    v0e8*10e4.d+4d4
+AC  c+4<g+4a+4>c+v0c+*11<b v0b8*11b4.a+4a4
+
+9B  c+4e4a4>c+4 <b4g+v0g+*10ev0e6*10<bv0b6*10a&
+AC  g+4b4>e4g+4 f+4d+v0d+*11<bv0b6*11f+v0f+6*11e&
+
+9B  a4>c+4e4g+v0g+*10f+& f+1 
+AC  e4g+4b4>d+v0d+*11c+& c+1
+
+9B  b2a+2 a2a+4.b8
+AC  f+2f2 e2f4.f+8
+
+9B  v0br2.^6  r6*10>d+v0d+4*10d+2 < ]
+AC  v0f+r2.^6 r6*11a+v0a+4*11a+2 <  ]
+
+9B  f+4c+4d+4f+v0f+*10e&    e2cv0c*10egv0g*10f+&
+AC  c+4<g+4a+4>c+v0c+*11<b& b2gv0g*11b>dv0d*11c+&
+
+9B  f+2dv0d*10f+av0a*10g+&
+AC  c+2<av0a*11>c+ev0e*11d+&
+
+9B  g+2g+v0g+*10ab4  >e4v0e6*10ev0e2 <
+AC  d+2d+v0d+*11ef+4 b4v0b6*11bv0b2 <
+
+9ABC    ]
+
+;*-*-* Sub *-*-*
+
+*15 = { @e05v15 } ;Volume High Long
+*16 = { @e06v15 } ;Volume High Short
+*17 = { @e07v14 } ;Volume Low Long
+*18 = { @e08v14 } ;Volume Low Short
+
+DEF [0
+
+D   [ [ *15b%45&v0b  *17b%45&v0b  *16b%29&v0b  *16b%45&v0b  *18b12&   b%29&v0b  *16b%45&v0b  *18b%16 *15b%45&v0b  *17b%45&v0b
+E   [ [ *15g+%45&v0g+*15g+%45&v0g+*16g+%29&v0g+*18g+%45&v0g+*16f+12&  f+%29&v0f+*16f+%45&v0f+*16f+%16*15f+%45&v0f+*15f+%45&v0f+
+F   [ [ *15e%45&v0e  *15e%45&v0e  *16e%29&v0e  *16e%45&v0e  *18d+12&  d+%29&v0d+*16d+%45&v0d+*16d+%16*15d+%45&v0d+*15d+%45&v0d+
+
+D   *15a%45&v0a  *17a%45&v0a  *16b%29&v0b  *16b%45&v0b  *18b12&  | b%29&v0b       *17>b%13&v0b*17>c+12^%13&v0c+*15d+%13&v0d+*15e4  *15<<b%45&v0b
+E   *15f+%45&v0f+*15f+%45&v0f+*16f+%29&v0f+*16f+%45&v0f+*16f+12& | f+%29&v0f+     *15>b%13&v0b*17>c+12^%13&v0c+*15d+%13&v0d+*15e4  *15<<f%45&v0f
+F   *15e%45&v0e  *17e%45&v0e  *16d+%29&v0d+*16d+%45&v0d+*16d+12& | d+%29^%12&v0d+ *15>b%13&v0b*17>c+12^%13&v0c+*17d+%13&v0d+*15e8. *15<<c+%45&v0c+
+
+D   *17a%45&v0a  *15a%45&v0a  *18b%29&v0b  *18b%45&v0b  *16b12&   b%29&v0b  *18b%45&v0b  *16b%16 *17b%45&v0b  *15b4&
+E   *15f+%45&v0f+*15f+%45&v0f+*18f+%29&v0f+*16f+%45&v0f+*16f+12&  f+%29&v0f+*16f+%45&v0f+*16f+%16*15f%45&v0f  *15f4&
+F   *15d+%45&v0d+*15e%45&v0e  *18d+%29&v0d+*18d+%45&v0d+*18d+12&  d+%29&v0d+*16d+%45&v0d+*18d+%16*15c+%45&v0c+*15c+4&
+
+D   b4 *15a4^12^%13&v0a  *18a4^12&   a8> *17e4.  *18d+%29&v0d+*18d+4^12 < ]
+E   f4 *17f+4^12^%13&v0f+*16f+4^12&  f+8>*15c+4.<*16b%29&v0b  *16b4^12    ]
+F   c+4*17e4^12^%13&v0e  *16e4^12&   e8  *15a4.  *16f+%29&v0f+*16f+4^12   ]
+
+D   b%29&v0b       *17>>e%13&v0e*17d+12^%13&v0d+*15c+%13&v0c+*15<b4  *15<b%45&v0b
+E   f+%29&v0f+     *15>>e%13&v0e*17d+12^%13&v0d+*15c+%13&v0c+*15<b4  *15<f%45&v0f
+F   d+%29^%12&v0d+ *15>>e%13&v0e*17d+12^%13&v0d+*17c+%13&v0c+*15<b8. *15<c+%45&v0c+
+
+D   *17a%45&v0a  *15a%45&v0a  *18b%29&v0b  *18b%45&v0b  *16b12&   b%29&v0b  *18b%45&v0b  *16b%16 *17b%45&v0b  *15b4&  |
+E   *15f+%45&v0f+*15f+%45&v0f+*18f+%29&v0f+*16f+%45&v0f+*16f+12&  f+%29&v0f+*16f+%45&v0f+*16f+%16*15f%45&v0f  *15f4&  |
+F   *15d+%45&v0d+*15e%45&v0e  *18d+%29&v0d+*18d+%45&v0d+*18d+12&  d+%29&v0d+*16d+%45&v0d+*18d+%16*15c+%45&v0c+*15c+4& |
+
+D   b4*15a4^12^%13&v0a  *18b4^12&   b8 *15b%69&v0b  *17b2&
+E   f4*15f+4^12^%13&v0f+*16f+4^12&  f+8*15g+%69&v0g+*17g+2&
+F   c+4*15e4^12^%13&v0e *16d+4^12&  d+8*15e%69&v0e  *17d+2&
+
+D   b4 *15a4^12^%13&v0a  *18a4^12&   a6 *16b12^%45&v0b  *15b2&
+E   g+4*15f+4^12^%13&v0f+*16f+4^12&  f+6*16g+12^%45&v0g+*15g+2&
+F   d+4*17e4^12^%13&v0e  *16e4^12&   e6 *18d+12^%45&v0d+*15e2&
+
+D   b4 *15a+4^12^%13&v0a+*16a+4^12&  a+8*15>e%69&v0e  *16d+%29&v0d+*16d+4^12&
+E   g+4*15f+4^12^%13&v0f+*16f+4^12&  f+8*15>c+%69&v0c+*16<b%29&v0b *16b4^12&
+F   e4 *15c+4^12^%13&v0c+*16c+4^12&  c+8*15a%69&v0a   *18f+%29&v0f+*18f+4^12&
+
+D   d+8<*15b2 *15a+4.&  a+8*15a2 *15a+%45&v0a+*18b8&
+E   b8  *15f+2*15f4.&   f8 *15e2 *15f%45&v0f  *16f+8&
+F   f+8 *17c+2*15c4.&   c8 *15<b2*17>c%45&v0c *16c+8&
+
+D   b4^%13&v0b      *17b%5&v0b*17>d+%5&v0d+*17f+%5&v0f+*15a%5&v0a*15b2&    b6*18d+4^%13&v0d+ *17d+2< ]
+E   f+4^%13&v0f+    *15b%5&v0b*15>d+%5&v0d+*17f+%5&v0f+*15a%5&v0a*15b2&    b6*16<a4^%13&v0a  *15a2   ]
+F   c+4^%13^16&v0c+*15b%5&v0b*15>d+%5&v0d+*17f+%5&v0f+*17a%5&v0a*15b4..&  b6*16<d+4^%13&v0d+*15d+2  ]
+
+D   b4*17a4^12^%13&v0a  *16b4^12&   b4 *17g4^12^%13&v0g*16g4^12&
+E   f4*15f+4^12^%13&v0f+*16f+4^12&  f+4*15e4^12^%13&v0e*16e4^12&
+F   c+4*15e4^12^%13&v0e *16d+4^12&  d+4*15c4^12^%13&v0c*16c4^12&
+
+D   g4*17a4^12^%13&v0a  *16a4^12&   a4 *17b4^12^%13&v0b  *16b4^12
+E   e4*15f+4^12^%13&v0f+*18f+4^12&  f+4*17g+4^12^%13&v0g+*16g+4^12
+F   c4*15d4^12^%13&v0d  *18d4^12&   d4 *17e4^12^%13&v0e  *16e4^12
+
+D   *15>e4^12^%13&v0e *16e2^12<
+E   *15b4^12^%13&v0b  *16b2^12 
+F   *15g+4^12^%13&v0g+*16g+2^12 
+
+DEF ]
+
+;*-*-* Bass *-*-*
+
+GH  [0
+GH  [ [ e4>e12&(2<er%13)2e12c+12&(2er%13)2>c+12&(2<cr%29)2c+12
+GH  <g+4>g+12&(2<g+r%13)2g+12g+12&(2g+r%13)2>g+12&(2<g+r%29)2g+12
+GH  f+4>f+12&(2<f+r%13)2f+12b12&(2f+r%13)2>b12&(2<br%29)2b12
+GH  g+4>g+12&(2<g+r%13)2g+12>c+12&(2<g+r%13)2>>c+12&(2<c+r%29)2c+12
+GH  <f+4>f+12&(2<f+r%13)2f+12b12&(2f+r%13)2>b12&(2<br%29)2b12
+GH  g+4>g+12&(2<g+r%13)2g+12>c+12&(2<g+r%13)2>>c+12&(2<c+r%29)2c+12 |
+GH  <f+4g+4a4a+12&(2ar%13)2b12&(2a+
+GH  r%21)2b4.b12&(2br%13)2b12&(2br%45)2 > ] |
+GH  <f+4>f+12&(2<f+r%13)2f+12b12&(2f+r%13)2>b12&(2<br%29)2>e12&(2b
+GH  r%21)2e4.d+4d4
+GH  <a4b4>c+4<a4
+GH  >e4f+4g+4e4
+GH  <f+4g+4a+4f+4
+GH  b4>c+4d+4<b4&(2>d+
+GH  r%21)2<b4.&(2br%21)2a+4.&(2
+GH  a+r%21)2a4.&(2ar%21)2a+4b8&(2b
+GH  r%189
+GH  r6)2b12&(2b4)2b%93&(2b)2 > ]
+GH  <f+4>f+12&(2<f+r%13)2>f+12<b12&(2>f+r%13)2b12&(2<br%29)2>c12&
+GH  c12&(2<br%13)2>c12c4c4c12&(2cr%13)2d12&
+GH  d12&(2cr%13)2d12d4d4d12&(2dr%13)2e12&
+GH  e12&(2dr%13)2e12e4e4e4
+GH  e4&(2er%29)2e12&(2er%29)2<b12>c+12&(2<br%13)2>d+12
+GH  ]
+
+#end

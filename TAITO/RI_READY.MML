@@ -1,0 +1,161 @@
+;[gain=1.0 name=RI_READY duration=300s fade=5s cpu=0 lpf=0]
+; The line above defines extra options, works only on msxplay.com
+; name    : Name of mml, use as the base download filename.
+; gain    : Volume gain. (default: 1.0)
+; duration: Maxiumum play duration. (default: 300s)
+; fade    : Time of fading out. (default: 5s)
+; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
+; lpf     : Low-pass filter. 0:off, 1:on (default: 0)
+; loop    : Number of global loops. (default: 2).
+;           Note that duration takes precedence over loop.
+
+; Version 1.00
+
+;*-*-* Initial setting
+
+#opll_mode  0
+#machine_id 2
+#lfo_mode   0
+#title  {   "TAITO - RAINBOW ISLANDS - 01 - << READY >>"
+            "MGS Arrange by Takawo"    }
+
+#alloc {
+        0 = 200,
+        1 = 100,
+        2 = 1,
+        3 = 1,
+        4 = 1,
+        5 = 1,
+        6 = 1,
+        7 = 1,
+        8 = 1,
+        9 = 500,
+        A = 500,
+        B = 500,
+        C = 700,
+        D = 700,
+        E = 750,
+        F = 1100,
+        G = 1100,
+        H = 1100 }
+
+#tempo      183
+;#tempo      90
+
+;*-*-* Tone setting
+
+@e01 = { ,,f9=60 }        ;Lead 1 (OPLL)
+@e02 = { ,,f9=60 }        ;Lead 2 (OPLL)
+@e05 = { ,,@10.e@11.fb=5.f=5.5=5.a=5.5=5.a=5.4=5 }                 ;Sub 1 (OPLL)
+@e06 = { ,,@10.e@11.f89f=5.6=5.4=5 }                 ;Sub 2 (OPLL)
+@e07 = { ,,@10.d@11.bcdf=5.7=5.a=5.4=5 }                 ;Sub 3 (OPLL)
+@e08 = { ,,@10.f@11.faf=5.8=5.e=5.4=5.7=5.4=5 }                 ;Sub 4 (OPLL)
+@e16 = { ,,f:2.e:2.a=7.0=150 }        ;Bass (OPLL)
+@e17 = { ,,@12.f@13.f }           ;Bass (OPLL)
+
+@e30 = { ,,0 } ;Compulsion 0db
+@e31 = { ,,f } ;Clear Envelope
+
+@#15 = 0
+
+@v16 = {                        ;Synth Bell
+;   TL FB
+    18, 4,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    6, 0,15,10, 0, 2, 0, 0, 1, 0, 0,
+    7, 0,13, 8, 0, 1, 0, 0, 1, 0, 0 }
+
+;*-*-* Macro settings
+
+;a1  = a%192
+;a2  = a%96
+;a4  = a%48
+;a8  = a%24
+;a16 = a%12
+;a32 = a%6
+;a64 = a%3
+
+;a3  = a%64
+;a6  = a%32
+;a12 = a%16
+;a24 = a%8
+;a48 = a%4
+
+;*-*-* MML
+
+;*-*-* Initialization *-*-*
+
+;1   s0m200 o7 r2 [0 a4c4c4c4 ]
+
+9   @16 @e01 q8 l%3 o7 r2 sf h0,1,2,2     ;Lead 1 (OPLL) 
+A   @16 @e02 q8 l%3 o5 r2 sf h0,1,2,2       ;Lead 2 (OPLL) 
+B   @16 @e01 q8 l%3 o7 r2 sf h0,0,2,-2 @\15    ;Lead 1 Delay (OPLL)
+C   @16 @e02 q8 l%3 o5 r2 sf h0,0,2,-2 @\15    ;Lead 2 Delay (OPLL)
+
+D   @11 @e05 q8 l%3 o5 r2 sf h0,1,2,2       ;Sub 1 (OPLL)
+E   @11 @e05 q8 l%3 o5 r2 sf h0,1,2,-3 \1   ;Sub 2 (OPLL)
+F   @11 @e05 q8 l%3 o4 r2 sf h0,1,2,3  \-1     ;Sub 3 (OPLL)
+
+G   @10 @e16 q8 l%3 o2 v0r2 v15             ;Bass (OPLL) 
+H   @12 @e17 q8 l%3 o2 v0r2 v15             ;Bass (OPLL) 
+
+;*-*-* Lead *-*-*
+
+*10 = { v12 } ;Volume
+*11 = { v14 } ;Volume
+*12 = { v11 } ;Volume
+*13 = { v13 } ;Volume
+
+BC  r16
+
+9   *10d+%29&v0d+*10<b%13&v0b*10>c+%29&v0c+*10d+%13&v0d+*10e%29&v0e*10f+%13&v0f+*10b%29&v0b*10b12&
+A   *11g+%29&v0g+*11e%13&v0e*11f+%29&v0f+*11g+%13&v0g+*11a%29&v0a*11b%13&v0b*11>e%29&v0e*11e12&
+B   *12d+%29&v0d+*12<b%13&v0b*12>c+%29&v0c+*12d+%13&v0d+*12e%29&v0e*12f+%13&v0f+*12b%29&v0b*12b12&
+C   *13g+%29&v0g+*13e%13&v0e*13f+%29&v0f+*13g+%13&v0g+*13a%29&v0a*13b%13&v0b*13>e%29&v0e*13e12&
+
+9   b%45&v0b*10a+%29&v0a+*10g+%13&v0g+*10f+%29&v0f+*10f%13&v0f*10g+%29&v0g+*10g%13&v0g
+A   e%45&v0e*11d+%29&v0d+*11c+%13&v0c+*11<b%29&v0b*11a+%13&v0a+*11>c+%29&v0c+*11c%13&v0c
+B   b%45&v0b*12a+%29&v0a+*12g+%13&v0g+*12f+%29&v0f+*12f%13&v0f*12g+%29&v0g+*12g%13&v0g
+C   e%45&v0e*13d+%29&v0d+*13c+%13&v0c+*13<b%29&v0b*13a+%13&v0a+*13>c+%29&v0c+*13c%13&v0c
+
+9   *10f+%29&v0f+*10f+%13&v0f+*10f%29&v0f*10f+12r4*10a+%29&v0a+*10a+%13&v0a+
+A   <*11b%29&v0b*11b%13&v0b*11a+%29&v0a+*11b12r4*11>d+%29&v0d+*11d+%13&v0d+
+B   *12f+%29&v0f+*12f+%13&v0f+*12f%29&v0f*12f+12r4*12a+%29&v0a+*12a+%13&v0a+
+C   <*13b%29&v0b*13b%13&v0b*13a+%29&v0a+*13b12r4*13>d+%29&v0d+*13d+%13&v0d+
+
+9   *10a%29&v0a*10a+12r4*10>c+%29&v0c+*10c+%13&v0c+*10c%29&v0c*10c+12r4
+A   *11d%29&v0d*11d+12r4*11f+%29&v0f+*11f+%13&v0f+*11f%29&v0f*11f+12r4
+B   *12a%29&v0a*12a+12r4*12>c+%29&v0c+*12c+%13&v0c+*12c%29&v0c*12c+12r4
+C   *13d%29&v0d*13d+12r4*13f+%29&v0f+*13f+%13&v0f+*13f%29&v0f*13f+12r4
+
+;*-*-* Sub *-*-*
+
+*15 = { @e05v15 } ;Volume 1
+*16 = { @e06v15 } ;Volume 2
+*17 = { @e07v14 } ;Volume 3
+*18 = { @e08v15 } ;Volume 4
+
+D   *15g+%45&v0g+*17g+%45&v0g+*15g+4^%29&v0g+*17a12&
+E   *15e%45&v0e*15e%45&v0e*15e4^%29&v0e*15e12&
+F   *18b%45&v0b*18b%45&v0b*18b4^%29&v0>c+*18c+12&
+
+D   a%29&v0a*15a%45&v0a*17a%13&v0a*15a%45v0a*17a+%45&v0a+
+E   e%29&v0e*15e%45&v0e*15e%13&v0e*15e%45v0e*15f+%45&v0f+
+F   c+%29&v0c+*18c+%45&v0c+*18c+%13&v0c+*18c+%45v0c+*18c+%45&v0c+
+
+D   *15b%29&v0b*15b%13&v0b*16<b%29&v0b*16b%45&v0b*17b%13&v0b*16>b%29&v0b*16b%13&v0b
+E   *15f+%29&v0f+*15f+%13&v0f+*15<<b%29&v0b*15b%45&v0b*15b%13&v0b*15>>f+%29&v0f+*15f+%13&v0f+
+F   *18d+%29&v0d+*18d+12^2*18d+%29&v0d+*18d+12&
+
+D   *15<b%29&v0b*17b%45&v0b*16b%13&v0b*17>b%29&v0b*17b%13&v0b*16a+%29&v0a+*16b%13&v10b2
+E   *15<<b%29&v0b*15b%45&v0b*15b%13&v0b*15>>f+%29&v0f+*15f+%13&v0f+*15f%29&v0f*15f+%13&v10f+2
+F   d+2*18d+%29&v0d+*18d+%13&v0d+*18d%29&v0d*18d+%13&v10d+2
+
+;*-*-* Bass *-*-*
+
+GH  e4b4>e4<b4
+GH  a4g+4a4f+4
+GH  b6b12<b6b12&(2br%29)2b12>b6b12
+GH  <b6b12&(2br%29)2b12>b6b12<b6b12&(2b
+
+#end
