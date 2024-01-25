@@ -9,7 +9,10 @@
 ; loop    : Number of global loops. (default: 2).
 ;           Note that duration takes precedence over loop.
 
-; Version 1.00
+; Version 1.10
+;
+;   1.00 : 公開版
+;   1.10 : メロディ音色の調整
 
 ;*-*-* Initial setting
 
@@ -87,10 +90,14 @@
 
 ;1   s0m200 o7 r2 [0 a4c4c4c4 ]
 
-9   @16 @e01 q8 l12 o7 r2 sf h0,1,2,4       ;Lead 1 (OPLL) 
-A   @16 @e02 q8 l12 o6 r2 sf h0,1,2,4       ;Lead 2 (OPLL) 
-B   @16 @e01 q8 l12 o7 r2 sf h0,3,0,-2 @\25 ;Lead 1 Delay (OPLL)
-C   @16 @e02 q8 l12 o6 r2 sf h0,3,0,-2 @\25 ;Lead 2 Delay (OPLL)
+;9   @16 @e01 q8 l12 o7 r2 sf h0,1,2,4       ;Lead 1 (OPLL) 
+;A   @16 @e02 q8 l12 o6 r2 sf h0,1,2,4       ;Lead 2 (OPLL) 
+;B   @16 @e01 q8 l12 o7 r2 sf h0,3,0,-2 @\25 ;Lead 1 Delay (OPLL)
+;C   @16 @e02 q8 l12 o6 r2 sf h0,3,0,-2 @\25 ;Lead 2 Delay (OPLL)
+9   @16 @e01 q8 l12 o7 r2 sf h0,1,2,-4 @\50 ;Lead 1 (OPLL) 
+A   @16 @e02 q8 l12 o6 r2 sf h0,1,2,-4 @\50 ;Lead 2 (OPLL) 
+B   @16 @e01 q8 l12 o7 r2 sf h0,3,0,2       ;Lead 1 Delay (OPLL)
+C   @16 @e02 q8 l12 o6 r2 sf h0,3,0,2       ;Lead 2 Delay (OPLL)
 
 D   @11 @e05 q8 l%3 o5 r2 sf h0,1,2,2       ;Sub 1 (OPLL)
 E   @11 @e05 q8 l%3 o5 r2 sf h0,1,2,-3 \1   ;Sub 2 (OPLL)
