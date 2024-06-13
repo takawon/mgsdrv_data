@@ -9,9 +9,9 @@
 ; loop    : Number of global loops. (default: 2).
 ;           Note that duration takes precedence over loop.
 
-; Version 1.00
+; Version 1.10
 ;
-;   1.10 : Viola の音色を scc_arrange で調整 / SCC 8ch の音化けを修正 (S.ENV適用時に音色指定をしていなかったことが原因)
+;   1.10 : Viola の音色を scc_arrange で調整 / SCC 5ch の音化けを修正 (S.ENV適用時に音色指定をしていなかったことが原因)
 ;   1.00 : 公開 (Youtube版)
 
 ;*-*-* Initial setting
