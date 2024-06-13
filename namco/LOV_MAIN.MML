@@ -1,0 +1,772 @@
+;[gain=1.0 name=LOV_MAIN duration=300s fade=5s cpu=0 lpf=0]
+; The line above defines extra options, works only on msxplay.com
+; name    : Name of mml, use as the base download filename.
+; gain    : Volume gain. (default: 1.0)
+; duration: Maxiumum play duration. (default: 300s)
+; fade    : Time of fading out. (default: 5s)
+; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
+; lpf     : Low-pass filter. 0:off, 1:on (default: 0)
+; loop    : Number of global loops. (default: 2).
+;           Note that duration takes precedence over loop.
+
+; Version 1.00
+;
+;   1.10 : Viola の音色を scc_arrange で調整 / SCC 8ch の音化けを修正 (S.ENV適用時に音色指定をしていなかったことが原因)
+;   1.00 : 公開 (Youtube版)
+
+;*-*-* Initial setting
+
+#opll_mode  0
+#machine_id 2
+#lfo_mode   0
+#title  {   "namco - ワルキューレの伝説 - 03 - << メイン・テーマ >>"
+            "MGS Arrange by Takawo"    }
+
+#alloc {
+        0 = 2100,
+        1 = 950,
+        2 = 600,
+        3 = 250,
+        4 = 300,
+        5 = 550,
+        6 = 500,
+        7 = 500,
+        8 = 500,
+        9 = 550,
+        A = 700,
+        B = 250,
+        C = 250,
+        D = 500,
+        E = 550,
+        F = 1300,
+        G = 1150,
+        H = 1450 }
+
+#tempo      152
+
+;*-*-* Tone setting
+
+@e00 = { ,,@00\-127.f@01\64.f@02\63.fe@03.c8@04.5:2@05.5:2@06.4:2@07.\-5.4\-5.3\-10.3\-10.3\-10.3\-10.0=50 } ;Bass (SCC)
+@e01 = { ,,cef:2.ec.0=20 } ;Bass (PSG)
+@e02 = { ,,[@08.f:2@09.f:2@10.f:2@11.f:2@12.f:2@13.f:2@14.f:2@13.f:2@12.f:2@11.f:2@10.f:2@09.f:2] } ;Glissando (SCC)
+
+@e05 = { ,,@5f:2@6fc=50.f=70 } ;Sub Lead (OPLL)
+@e06 = { ,,f:3.d=60.f=60 } ;Synthesizer (OPLL)
+@e07 = { ,,@7f:2@8.f:3.ec3=10 } ;Code (OPLL)
+@e08 = { ,,@7.36@8.adf } ;Lead'
+@e10 = { ,,@15f@16f@17f@18f:2@19f:2@20f:4@21f:4@22f } ;Viola (SCC)
+
+@e12 = { ,,@31.a       [@23\-1.f\2.f:2@24\-1.f:2\1.f@25f\-2.f:2@26\2.f\-1.f:2@27.f\1.f:2@28\-2.f:2\1.f@29f\-1.f:2@30\1.f:2\1.f@31f\-1.f:2@30\-1.f:2\2.f@29\-1.f:2\1.f@28f\-2.ff@27\2.f:2\-1.f@26.f:2\1.f@25f\-2.f:2\1.@24f:3] } ;Strings start (SCC)
+@e13 = { ,,@30.5d@31.fe[@23\-1.f\2.f:2@24\-1.f:2\1.f@25f\-2.f:2@26\2.f\-1.f:2@27.f\1.f:2@28\-2.f:2\1.f@29f\-1.f:2@30\1.f:2\1.f@31f\-1.f:2@30\-1.f:2\2.f@29\-1.f:2\1.f@28f\-2.ff@27\2.f:2\-1.f@26.f:2\1.f@25f\-2.f:2\1.@24f:3] } ;Strings 1 (SCC)
+@e14 = { ,,@26.57@25.ad@24.fc@23.e[@31\1.f\-2.f\2.f@30\-1.f:2\-1.@29f\1.f\-1.f@28\2.f\-1.f@27f\-1.f\1.f@26f\-1.f@25\1.f\1.
+           f\-1.f@24f:2@23\1.f\-2.f\2.f\-1@24\1.f\-2.f\2.f@25\-1.f:2\-1.@26f\1.f\-1.f@27\2.f\-1.f@28f\-1.f\1.f@29f\-1.f@30\1.f:2] } ;Strings 1 deley (SCC)
+@e15 = { ,,38cfef } ;Strings 2 (SCC)
+
+@e18 = { ,,@3.f@5.f@6.f:2@8.f:4@9.f:4@10.f } ;Tam tam 3 (Low Volume) (OPLL)
+@e19 = { ,,@1.f@3.f@4.f:2@6.f:4@7.f:4@8.f } ;Tam tam 3 (OPLL)
+@e20 = { ,,e\-10.e\-10[c\-8] } ;Tam tam 1 (OPLL)
+@e21 = { ,,/2n0.c.n5.b/3n0.a.n5.9.n0.8.n4.6.n0.5.n3.5.n0.0=20 } ;Tam tam (PSG)
+@e22 = { ,,fe:9.e5=15 } ;Tam tam 2 (OPLL)
+@e23 = { ,,/3n0.dc./2.730 } ;Hi Hat (Close) (PSG)
+@e24 = { ,,ed:2.0=50 } ;Hi Hat (Close) (OPLL)
+@e25 = { ,,e\-10.e\-10.e\-10.e\-10.d\-10.d\-10.d\-10.c\-10.c\-10.b\-10.b\-10.a\-10.a\-10.9\-10.9\-10.8\-10.8\-10.7\-10.7\-10.7\-10 } ;Snare Drum (OPLL)
+@e26 = { ,,/3n28.f.n31.e.n28.d.n30.c.n25.c.n30.b.n20.b.n31.a.n25.a.n28.8.n20.8.n25.7.n18.7.n16.6.n10.60=30 } ;Snare Drum (PSG)
+@e27 = { ,,/3n0,d./2n3.90=40 } ;Hi Hat (Open) (PSG)
+@e28 = { ,,eb.0=50 } ;Hi Hat (Open) (OPLL)
+
+@e30 = { ,,0 } ;Compulsion 0db
+@e31 = { ,,f } ;Clear Envelope
+
+@#15 = 0
+
+@s00 = { 07 17 7F 80 65 78 7F 7B 70 60 4F 3C 2B 1A 0E 04 F7 EE E4 DF DA 80 7F A2 86 80 8A 9A B4 CA DF F2 } ;Bass (morphing)
+@s01 = { 0B 7F 80 52 72 7C 7F 78 6D 5B 4A 38 26 17 0B 00 F7 EC E7 E0 80 7F 9E 83 80 88 9A B1 C6 DB EF FE }
+@s02 = { 7F 80 44 60 68 6A 63 5B 4D 40 31 23 16 0A 01 F9 F2 EB E6 E2 DF 80 7F AB 91 8F 99 B4 C4 D5 E6 F8 }
+@s03 = { 7F 80 5E 76 7F 7F 76 4B 3F 31 21 12 07 FD F8 ED E8 E1 DE DA D7 80 7F 93 82 85 95 AA BD D0 E3 ED }
+@s04 = { 7F 80 5D 76 7F 7E 77 6A 5B 4E 3D 2E 23 17 0B 01 FB F3 EF EA E6 E4 80 7F 80 9C 87 8D A1 BD DE F4 }
+@s05 = { 7F 80 5E 76 7F 7B 73 65 58 47 3A 2E 20 16 0D 03 FD F5 F2 EC E8 E6 80 7F 80 9D 8A 93 AB BE D8 F3 }
+@s06 = { 7F 80 5C 75 7F 7F 78 6B 5C 4A 38 2B 21 14 0A 02 FA F5 F0 ED E9 E6 80 7F 80 94 8A 94 A7 BD D4 F0 }
+@s07 = { 7F 80 64 75 7F 7F 79 6F 5F 4F 3F 2E 22 17 0B 03 FB F4 F0 ED E7 E5 80 7F 80 98 8B 94 A6 BC D4 F1 }
+
+;@s00 = { 07 17 5D B5 65 78 7F 7B 70 60 4F 3C 2B 1A 0E 04 F7 EE E4 DF DA A0 5F A2 86 80 8A 9A B4 CA DF F2 } ;Bass (morphing)
+;@s01 = { 0B 40 96 52 72 7C 7F 78 6D 5B 4A 38 26 17 0B 00 F7 EC E7 E0 9E 77 9E 83 80 88 9A B1 C6 DB EF FE }
+;@s02 = { 6A 83 44 60 68 6A 63 5B 4D 40 31 23 16 0A 01 F9 F2 EB E6 E2 DF 80 7F AB 91 8F 99 B4 C4 D5 E6 F8 }
+;@s03 = { 52 80 5E 76 7F 7F 76 4B 3F 31 21 12 07 FD F8 ED E8 E1 DE DA D7 82 54 93 82 85 95 AA BD D0 E3 ED }
+;@s04 = { 34 B0 5D 76 7F 7E 77 6A 5B 4E 3D 2E 23 17 0B 01 FB F3 EF EA E6 E4 8C 56 80 9C 87 8D A1 BD DE F4 }
+;@s05 = { 38 B0 5E 76 7F 7B 73 65 58 47 3A 2E 20 16 0D 03 FD F5 F2 EC E8 E6 A4 4F 80 9D 8A 93 AB BE D8 F3 }
+;@s06 = { 30 C0 5C 75 7F 7F 78 6B 5C 4A 38 2B 21 14 0A 02 FA F5 F0 ED E9 E6 A1 40 80 94 8A 94 A7 BD D4 F0 }
+;@s07 = { 3A C1 64 75 7F 7F 79 6F 5F 4F 3F 2E 22 17 0B 03 FB F4 F0 ED E7 E5 A0 3F 80 98 8B 94 A6 BC D4 F1 }
+
+@s08 = { 23 18 FE E5 BE 95 80 89 A5 B3 BC DA 0C 33 2A 05 F7 1C 5D 7F 74 4A 21 01 F5 FC 03 01 F5 F1 03 1A } ;Synthe (morphing)
+@s09 = { F1 D5 BF B8 B5 B4 B8 C8 E6 07 1E 2C 32 36 32 22 16 1E 34 48 3E 22 07 F8 F8 FA F2 EF F4 00 0C 04 }
+@s10 = { BF 92 80 8B AC D4 F0 08 26 5B 7F 7D 58 38 3B 40 36 1F 0C 11 08 FA ED F0 FB F7 E1 DD F3 0F 15 EE }
+@s11 = { DC C3 B5 B0 B6 C8 DD F4 0E 30 4E 5E 5D 5A 5D 54 35 0E F2 F6 FC FA EF E9 E8 DE C2 B2 BA D6 F0 EC }
+@s12 = { F8 F4 EA D5 C1 BB CA DF F5 04 1C 3E 62 7C 7F 69 34 FC D8 DB EF F9 F1 E2 D5 C4 A3 86 80 9D CA EA }
+@s13 = { D6 DE E6 E6 E0 DF E8 F6 02 08 18 38 5E 7A 7F 71 53 30 10 F4 DB C4 B8 BE CC D7 D1 C2 B8 BA C3 CE }
+@s14 = { B4 C8 E3 F6 00 03 06 0E 0E 0C 15 32 59 78 7F 79 72 64 48 0E C7 90 80 99 C2 EA FF FF F0 D7 BC B1 }
+
+@s15 = { 16 18 fe f2 f2 f5 0c 02 ea f3 03 01 0b 08 f3 eb ef f0 fa 15 1d 0c 05 17 1e 0d fb f0 df e4 e5 fe } ;Viola (morphing)
+@s16 = { 31 34 e9 d7 cc d6 0f f6 d7 fc 1a 1c 2c 20 f7 e2 e3 e2 04 32 38 15 15 34 30 01 e0 c7 b6 c8 c4 e7 }
+@s17 = { 25 3e e0 be b0 a9 f3 e6 c9 06 41 40 5e 5b 2f 02 f3 e4 15 57 5d 34 21 4f 4d 05 c3 a7 8f a8 a9 c5 }
+@s18 = { 31 06 b7 b1 96 b9 e0 cb e6 31 3a 4c 67 58 31 14 09 0f 4d 69 57 24 3b 59 3e e0 ad 89 8e a6 ab ee }
+@s19 = { f0 eb bd ae a0 a8 c9 ec ff 04 fb 1d 4a 52 41 36 3d 46 5d 5d 3d 0d 16 45 44 f7 b0 93 a2 cb d2 d6 }
+@s20 = { cf e5 db cc b1 b5 e0 fb e0 ca d1 ff 3d 4d 3f 39 45 4f 51 36 0b f1 12 46 47 f9 b1 ad d1 ff eb ce }
+@s21 = { ec 14 18 fa d5 c8 d3 d8 ca c6 d4 f6 1c 25 1d 11 1b 2a 2b 1c 15 19 23 31 2b 05 df e3 01 21 0a e3 }
+@s22 = { 03 00 00 f4 e8 e8 e8 e5 e3 e4 ed fd 04 03 00 00 0b 14 14 0f 0c 11 18 18 0e fe f6 fe 0f 10 09 03 }
+
+;@s15 = { fe 16 18 fe f2 f2 f5 0c 02 ea f3 03 01 0b 08 f3 eb ef f0 fa 15 1d 0c 05 17 1e 0d fb f0 df e4 e5 } ;Viola (morphing) 公開版
+;@s16 = { e7 31 34 e9 d7 cc d6 0f f6 d7 fc 1a 1c 2c 20 f7 e2 e3 e2 04 32 38 15 15 34 30 01 e0 c7 b6 c8 c4 }
+;@s17 = { c5 25 3e e0 be b0 a9 f3 e6 c9 06 41 40 5e 5b 2f 02 f3 e4 15 57 5d 34 21 4f 4d 05 c3 a7 8f a8 a9 }
+;@s18 = { ee 31 06 b7 b1 96 b9 e0 cb e6 31 3a 4c 67 58 31 14 09 0f 4d 69 57 24 3b 59 3e e0 ad 89 8e a6 ab }
+;@s19 = { d6 f0 eb bd ae a0 a8 c9 ec ff 04 fb 1d 4a 52 41 36 3d 46 5d 5d 3d 0d 16 45 44 f7 b0 93 a2 cb d2 }
+;@s20 = { ce cf e5 db cc b1 b5 e0 fb e0 ca d1 ff 3d 4d 3f 39 45 4f 51 36 0b f1 12 46 47 f9 b1 ad d1 ff eb }
+;@s21 = { e3 ec 14 18 fa d5 c8 d3 d8 ca c6 d4 f6 1c 25 1d 11 1b 2a 2b 1c 15 19 23 31 2b 05 df e3 01 21 0a }
+;@s22 = { 03 03 00 00 f4 e8 e8 e8 e5 e3 e4 ed fd 04 03 00 00 0b 14 14 0f 0c 11 18 18 0e fe f6 fe 0f 10 09 }
+
+@s23 = { 23 40 4F 58 64 66 4F 22 ED C2 B0 B4 BA AE 9A 9E C3 03 3C 4A 31 FA C2 9F 9F BE DC E2 D2 C3 CE F6 } ;Strings (morphing)
+@s24 = { 00 16 23 2B 3B 52 64 66 54 3D 23 0F 06 0C 1A 1C 15 15 2B 3F 34 FE BE 9A 9D BD DE F3 F0 E3 DC E9 }
+@s25 = { 1E 09 F6 FE 21 46 63 66 53 29 E9 AE 9A AE EE 29 4B 56 41 29 11 F4 D9 B2 9C A7 D6 1E 4E 5E 58 46 }
+@s26 = { 2A 57 66 5C 54 56 52 3B 1A 07 04 06 07 0A 17 1F 11 F6 ED F8 0A 07 E6 BC 9A 9A B9 E2 FB FA F0 FD }
+@s27 = { 04 36 5A 66 5E 4E 39 27 18 12 0E 02 EE D5 BB A7 9A 9E B2 CE E3 E5 D3 D0 D5 E3 EF F3 EA D6 CB D8 }
+@s28 = { 2F 41 50 5F 66 56 29 FA E2 E4 F0 F2 EE EA DD C7 AA 9A A2 BD E0 FC 0A 02 E8 C9 BE C5 D8 EE 02 1A }
+@s29 = { 63 66 5C 54 52 4D 3C 1C F5 CA B2 B7 D7 FA 06 E8 BC 9A 9A AE C1 D2 D2 C6 BC BE C8 D5 DA EA 15 41 }
+@s30 = { 51 66 64 4D 32 1D 15 12 0A FE E7 CA AC 9A 9E B3 D0 EA FA FE FA F9 02 0E 0E FB E0 D0 DA F3 12 33 }
+@s31 = { 36 5F 66 3F 00 CE B6 AC AF C3 DF EE E1 C6 B7 BA C5 C6 B7 A3 9A A6 C3 DC E1 D6 CA CA DC E9 F5 0C }
+
+;@s23 = { 2c 50 63 6e 7d 7f 63 2a e8 b2 9c a1 a8 9a 80 85 b4 04 4b 5c 3d f8 b2 87 87 ad d3 da c7 b4 c2 f4 } ;Strings (morphing)
+;@s24 = { 00 1c 2c 36 4a 67 7d 7f 69 4c 2c 13 08 0f 21 23 1a 1a 36 4f 41 fd ae 80 84 ac d6 f0 ec dc d3 e3 }
+;@s25 = { 26 0b f4 fe 29 57 7c 7f 68 33 e3 9a 80 9a ea 33 5e 6b 51 33 15 f1 cf 9e 83 91 cc 26 61 75 6e 57 }
+;@s26 = { 34 6d 7f 73 69 6b 67 4a 21 09 05 07 09 0d 1d 27 15 f4 e8 f6 0d 09 e0 ab 80 80 a7 da fa f8 ec fc }
+;@s27 = { 05 43 71 7f 76 61 47 31 1e 17 11 02 ea ca aa 91 80 85 9e c2 dc de c8 c4 ca dc eb f0 e4 cb be ce }
+;@s28 = { 3b 51 64 77 7f 6b 33 f8 da dd ec ef e9 e4 d4 b9 94 80 8a ac d8 fb 0c 02 e2 bb ae b6 ce e9 02 20 }
+;@s29 = { 7c 7f 73 69 66 60 4b 23 f2 bd 9f a5 cd f8 07 e2 ab 80 80 99 b1 c7 c7 b7 ab ae ba ca d0 e5 1a 51 }
+;@s30 = { 65 7f 7d 60 3e 24 1a 17 0d fd e1 bc 97 80 85 a0 c4 e5 f8 fd f8 f7 02 11 12 fa d8 c4 d0 f0 17 40 }
+;@s31 = { 43 77 7f 4f 00 c2 a3 97 9b b4 d7 ea d9 b8 a5 a9 b6 b8 a5 8c 80 8f b4 d3 d9 cb bc bc d3 e3 f2 0f }
+
+;@s23 = { 32 6b 7f 78 69 5f 55 49 3c 30 28 21 10 03 f9 f9 f4 ef ed ed ea d9 c5 be ca d9 d7 b6 8f 80 9b e1 } ;Strings (morphing)
+;@s24 = { f6 45 79 7f 64 37 09 e9 e2 f0 02 02 ee db dd f9 17 2a 33 3a 41 37 1c f7 d8 c2 b4 a4 91 80 81 ac }
+;@s25 = { b4 04 4b 5c 3d f8 b2 87 87 ad d3 da c7 b4 c2 f4 2c 50 63 6e 7d 7f 63 2a e8 b2 9c a1 a8 9a 80 85 }
+;@s26 = { 0d 58 7f 67 32 ea a7 80 84 b9 e8 de ab 8c a7 ee 21 1d fc dc ea 13 29 11 ce 8e 88 c3 01 05 e2 dc }
+;@s27 = { fc 34 6d 7f 73 69 6b 67 4a 21 09 05 07 09 0d 1d 27 15 f4 e8 f6 0d 09 e0 ab 80 80 a7 da fa f8 ec }
+;@s28 = { fa 27 50 69 7c 7f 76 60 46 34 26 10 f6 d9 d1 da e7 ec ef e1 ce b3 9c 8c 80 8e a4 b7 c3 c4 c4 d7 }
+;@s29 = { e5 1a 51 7c 7f 73 69 66 60 4b 23 f2 bd 9f a5 cd f8 07 e2 ab 80 80 99 b1 c7 c7 b7 ab ae ba ca d0 }
+;@s30 = { dd 11 4d 79 7f 6e 5c 5c 60 56 33 fe cb ae ae b9 bf b5 9c 87 80 94 ac c1 cf cf c9 c0 c0 c2 c4 c7 }
+;@s31 = { 08 3E 66 78 74 66 58 52 4E 43 2E 10 EE D8 D4 D9 DA D2 C4 BA B5 B6 B8 C0 CC D4 D0 BB A8 A1 B0 D4 }
+
+;@s23 = { 21 10 03 F9 F9 F4 EF ED ED EA D9 C5 BE CA D9 D7 B6 8F 80 9B E1 32 6B 7F 78 69 5F 55 49 3C 30 28 } ;Strings (morphing)
+;@s24 = { 02 EE DB DD F9 17 2A 33 3A 41 37 1C F7 D8 C2 B4 A4 91 80 81 AC F6 45 79 7F 64 37 09 E9 E2 F0 02 }
+;@s25 = { DA C7 B4 C2 F4 2C 50 63 6E 7D 7F 63 2A E8 B2 9C A1 A8 9A 80 85 B4 04 4B 5C 3D F8 B2 87 87 AD D3 }
+;@s26 = { DE AB 8C A7 EE 21 1D FC DC EA 13 29 11 CE 8E 88 C3 01 05 E2 DC 0D 58 7F 67 32 EA A7 80 84 B9 E8 }
+;@s27 = { 15 F4 E8 F6 0D 09 E0 AB 80 80 A7 DA FA F8 EC FC 34 6D 7F 73 69 6B 67 4A 21 09 05 07 09 0D 1D 27 }
+;@s28 = { E7 EC EF E1 CE B3 9C 8C 80 8E A4 B7 C3 C4 C4 D7 FA 27 50 69 7C 7F 76 60 46 34 26 10 F6 D9 D1 DA }
+;@s29 = { CD F8 07 E2 AB 80 80 99 B1 C7 C7 B7 AB AE BA CA D0 E5 1A 51 7C 7F 73 69 66 60 4B 23 F2 BD 9F A5 }
+;@s30 = { B9 BF B5 9C 87 80 94 AC C1 CF CF C9 C0 C0 C2 C4 C7 DD 11 4D 79 7F 6E 5C 5C 60 56 33 FE CB AE AE }
+;@s31 = { D1 C8 BA A1 94 8C 94 A3 B1 B8 AB 9A 8E 97 A3 A3 8D 80 97 D1 21 5E 7E 7F 7B 72 64 47 1C F0 D5 CF }
+
+@v16 = {                        ;Synth Bell
+;   TL FB
+    40, 6,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    15, 0,15,15, 0,10, 0, 0, 0, 0, 0,
+    15, 1,15,15, 0, 6, 0, 0, 0, 0, 0 }
+
+@v17 = {                        ;Synthesizer
+;   TL FB
+    23, 6,
+;   AR DR SL RR KL MT AM VB EG KR DT
+     6, 2, 2,15, 0, 1, 0, 0, 1, 0, 1,
+     7, 0,15,15, 0, 3, 0, 0, 1, 0, 0 }
+
+@v18 = {                        ;Bell
+;   TL FB
+    20, 4,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    15, 2,15,15, 0, 6, 0, 0, 0, 0, 1,
+    15, 3,15,15, 0, 2, 0, 0, 0, 0, 0 }
+
+;*-*-* Macro settings
+
+#macro_offset { b = 00,
+                s = 30,
+                h = 60,
+                o = 90,
+                q = 110,
+                w = 130,
+                t = 150,
+                m = 170,
+                l = 190
+                z = 210,
+                x = 230 }
+
+;a1  = a%192
+;a2  = a%96
+;a4  = a%48
+;a8  = a%24
+;a16 = a%12
+;a32 = a%6
+;a64 = a%3
+
+;a3  = a%64
+;a6  = a%32
+;a12 = a%16
+;a24 = a%8
+;a48 = a%4
+
+;*x00 #4  | *x05 #8 | *x10 #16 | *x15 #32 | *x20 #8.
+;*x25 #16 | *x30 #8 | *x35 #8. (Low Volume)
+
+;Bass Drum : b
+;#4
+*00 = { o3 v15 b_<b%6v0r8^%18 } ;F
+*01 = { r4 } ;G
+*02 = { o2 @15 b_<c48&@0c%8@14c%12r8 } ;H
+*03 = { r4 } ;1
+*04 = { o2 s1m400 e4 } ;2
+;#8
+*05 = { o3 v15 b_<b%6v0r%18 } ;F
+*06 = { r8 } ;G
+*07 = { o2 @15 b_<c48&@0c%8@14c%12 } ;H
+*08 = { r8 } ;1
+*09 = { o2 s1m400 e8 } ;2
+;#16
+*10 = { o3 v15 b_<b%6v0r%6 } ;F
+*11 = { r } ;G
+*12 = { o2 @15 b_<c48&@0c%8@14 } ;H
+*13 = { r } ;1
+*14 = { o2 s1m400 e } ;2
+;#6
+*15 = { o3 v15 b_<b%6v0r%26 } ;F
+*16 = { r6 } ;G
+*17 = { o2 @15 b_<c48&@0c%8@14c%12r24 } ;H
+*18 = { r6 } ;1
+*19 = { o2 s1m400 e6 } ;2
+;#12
+*20 = { o3 v15 b_<b%6v0r%10 } ;F
+*21 = { r12 } ;G
+*22 = { o2 @15 b_<c48&@0c%8@14c%4 } ;H
+*23 = { r12 } ;1
+*24 = { o2 s1m400 e12 } ;2
+
+;Snare Drum : s
+;#4
+*30 = { o4      v15 d+_<c4 } ;F
+*31 = { o3 @e25 v15 d32r8.. v13 } ;G
+*32 = { o2      @0  c_<d6 @14 r12 } ;H
+*33 = { o3 /3n20 s1m300 d+%4 v13@e26 c+_<c+%44 o1 } ;1
+*34 = { r4 } ;2
+;#6
+*45 = { o4      v15 d+_<f6 } ;F
+*46 = { o3 @e25 v15 d32r%26 v13 } ;G
+*47 = { o2      @0  c_<d6 @14 } ;H
+*48 = { o3 /3n20 s1m300 d+%4 v13@e26 c+_<c+%28 o1 } ;1
+*49 = { r6 } ;2
+;#12
+*50 = { o4      v15 d+_<a+12 } ;F
+*51 = { o3 @e25 v15 d32r%10 v13 } ;G
+*52 = { o2      @0  c_<g12 @14 } ;H
+*53 = { o3 /3n20 s1m300 d+%4 v13@e26 c+_<g%13 o1 } ;1
+*54 = { r12 } ;2
+
+;Hi Hat (Close) : h
+;#8
+*65 = { r8 } ;F
+*66 = { o1 @e24 c8 } ;G
+*67 = { r8 } ;H
+*68 = { @e23 a8 } ;1
+*69 = { r8 } ;2
+;#16
+*70 = { r } ;F
+*71 = { o1 @e24 c } ;G
+*72 = { r16 } ;H
+*73 = { @e23 a } ;1
+*74 = { r } ;2
+;#6
+*75 = { r6 } ;F
+*76 = { o1 @e24 c6 } ;G
+*77 = { r6 } ;H
+*78 = { @e23 a6 } ;1
+*79 = { r6 } ;2
+;#12
+*80 = { r12 } ;F
+*81 = { o1 @e24 c12 } ;G
+*82 = { r12 } ;H
+*83 = { @e23 a12 } ;1
+*84 = { r12 } ;2
+
+;Hi Hat (Open) : o
+;#4
+*90 = { r4 } ;F
+*91 = { o1 @e28 c32r8.. } ;G
+*92 = { r4 } ;H
+*93 = { @e27 c4 } ;1
+;#8
+*95 = { r8 } ;F
+*96 = { o1 @e28 c32r16. } ;G
+*97 = { r8 } ;H
+*98 = { @e27 c8 } ;1
+;#16
+*100 = { r } ;F
+*101 = { o1 @e28 c32r32 } ;G
+*102 = { r16 } ;H
+*103 = { @e27 c } ;1
+;#6
+*105 = { r6 } ;F
+*106 = { o1 @e28 c32r%26 } ;G
+*107 = { r6 } ;H
+*108 = { @e27 c6 } ;1
+;#12
+*110 = { r12 } ;F
+*111 = { o1 @e28 c32r%10 } ;G
+*112 = { r12 } ;H
+*113 = { @e27 c12 } ;1
+
+;Tam tam (Very High) : q
+;#16
+*120 = { o5 @e22 v15 d_<b16 @e31 } ;F
+*121 = { o3 @e20 v12 d32v11r%6 v13 } ;G
+*122 = { o2 @e19     b_<g+16@5 } ;H
+*123 = { o3 @e21     d16 o1 } ;1
+;#6
+*125 = { o5 @e22 v15 d_<f+6 @e31 } ;F
+*126 = { o3 @e20 v12 d32v11r%22v5r%4 v13 } ;G
+*127 = { o2 @e19     b_<d+6@5 } ;H
+*128 = { o3 @e21     d6 o1 } ;1
+
+;Tam tam (High) : w
+;#6
+*145 = { o4 @e22 v15 a+_d6 @e31 } ;F
+*146 = { o2 @e20 v12 a+32v11r%22v5r%4 v13 } ;G
+*147 = { o2 @e19     g_<b6@5 } ;H
+*148 = { o2 @e21     a+6 o1 } ;1
+;#12
+*150 = { o4 @e22 v15 a+_f+12 @e31 } ;F
+*151 = { o2 @e20 v12 a+32v11r%10 v13 } ;G
+*152 = { o2 @e19     g_d+12@5 } ;H
+*153 = { o2 @e21     a+12 o1 } ;1
+
+;Tam tam (Middle High) : t
+;#6
+*165 = { o4 @e22 v15 g_<b6 @e31 } ;F
+*166 = { o2 @e20 v12 g32v11r%22v5r%4 v13 } ;G
+*167 = { o2 @e19     e_<g+6@5 } ;H
+*168 = { o2 @e21     g6 o1 } ;1
+;#12
+*170 = { o4 @e22 v15 g_d+12 @e31 } ;F
+*171 = { o2 @e20 v12 g32v11r%10 v13 } ;G
+*172 = { o2 @e19     e_c12@5 } ;H
+*173 = { o2 @e21     g12 o1 } ;1
+;#6 (#64#%29)
+*175 = { o4 @e22 v15 g_f64g_<b%29 @e31 } ;F
+*176 = { o2 @e20 v12 g64g32v11r%23 v13 } ;G
+*177 = { o2 @e19     e_d64e_<g+%29@5 } ;H
+*178 = { o2 @e21     g64g%29 o1 } ;1
+
+;Tam tam (Middle) : m
+;#6
+*185 = { o4 @e22 v15 d+_<g6 @e31 } ;F
+*186 = { o2 @e20 v12 d+32v11r%22v5r%4 v13 } ;G
+*187 = { o2 @e19     c_<e6@5 } ;H
+*188 = { o2 @e21     d+6 o1 } ;1
+;#12
+*190 = { o4 @e22 v15 d+_<b12 @e31 } ;F
+*191 = { o2 @e20 v12 d+32v11r%10 v13 } ;G
+*192 = { o2 @e19     c_<g+12@5 } ;H
+*193 = { o2 @e21     d+12 o1 } ;1
+;#6 (#64#%29)
+*195 = { o4 @e22 v15 d+_c+64d+_<g%29 @e31 } ;F
+*196 = { o2 @e20 v12 d+64d+32v11r%23 v13 } ;G
+*197 = { o2 @e19     c_<a+64>c_<e%29@5 } ;H
+*198 = { o2 @e21     d+64d+%29 o1 } ;1
+;#12 (Low Volume)
+*200 = { o4 @e22 v13 d+_<b12 @e31 } ;F
+*201 = { o2 @e20 v10 d+32v9r%10 v13 } ;G
+*202 = { o2 @e18     c_<g+12@5 } ;H
+*203 = { o2 @e21 v11 d+12 o1 v13 } ;1
+
+;Tam tam (Middle Low) : l
+;#6
+*205 = { o3 @e22 v15 b_d+6 @e31 } ;F
+*206 = { o1 @e20 v12 b32v11r%22v5r%4 v13 } ;G
+*207 = { o1 @e19     g+_c6@5 } ;H
+*208 = { o1 @e21     b6 o1 } ;1
+;#12
+*210 = { o3 @e22 v15 b_g12 @e31 } ;F
+*211 = { o1 @e20 v12 b32v11r%10 v13 } ;G
+*212 = { o1 @e19     g+_e12@5 } ;H
+*213 = { o1 @e21     b12 o1 } ;1
+;#12 (Low Volume)
+*220 = { o3 @e22 v13 b_g12 @e31 } ;F
+*221 = { o1 @e20 v10 b32v9r%10 v13 } ;G
+*222 = { o1 @e18     g+_e12@5 } ;H
+*223 = { o1 @e21 v11 b12 o1 v13 } ;1
+
+;Tam tam (Low) : z
+;#6
+*225 = { o3 @e22 v15 a+_d6 @e31 } ;F
+*226 = { o1 @e20 v12 a+32v11r%22v5r%4 v13 } ;G
+*227 = { o1 @e19     g_c6@5 } ;H
+*228 = { o1 @e21     a+6 o1 } ;1
+;#12
+*230 = { o3 @e22 v15 a+_f+12 @e31 } ;F
+*231 = { o1 @e20 v12 a+32v11r%10 v13 } ;G
+*232 = { o1 @e19     g_d+12@5 } ;H
+*233 = { o1 @e21     a+12 o1 } ;1
+
+;Tam tam (Very Low) : x
+;#12
+*250 = { o3 @e22 v15 g_d+12 @e31 } ;F
+*251 = { o1 @e20 v12 g32v11r%10 v13 } ;G
+*252 = { o1 @e19     e_c12@5 } ;H
+*253 = { o1 @e21     g+12 o1 } ;1
+
+;*-*-* MML
+
+;456789abcdefgh ! ;PSG Only
+;1239abcdefgh ! ;SCC Only
+;12345678 ! ;OPLL Only
+
+;*-*-* Initialization *-*-*
+
+3      @e01 q8 l12 o2 v0r1 v12          ;Bass (PSG)
+4      @e00 q8 l12 o2 v0r1 v15 @\-10    ;Bass (SCC) 
+5      @e10 q8 l12 o3 v0r1 v13 @\-5     ;Code 1 (SCC) 
+6           q8     o6 v0r1 v11          ;Glissando 1 & Lead 1 (SCC) 
+7           q8     o6 v0r1 v11          ;Glissando 2 & Lead 1 delay (SCC) 
+8           q8     o6 v0r1 v3           ;Glissando 3 & Lead 2 (SCC) 
+
+D           q8     o6 v0r1 v11          ;Glissando 4 & Lead 1' (OPLL) 
+E           q8     o5 v0r1 v11          ;Glissando 5 & Lead 1' delay & Lead 2' (OPLL) 
+
+9   @6 @e05 q8 l4  o5 v0r1              ;Sub Lead 1 (OPLL) 
+A   @6 @e05 q8 l4  o5 v0r1              ;Sub Lead 2 (OPLL) 
+
+B   @6 @e07 q8 l4  o4 v0r1 v15          ;Code 2 (OPLL) 
+C   @6 @e07 q8 l4  o3 v0r1 v15 \-2      ;Code 3 (OPLL) 
+
+;F : Bass Drum
+;G : Snare & Hi Hat
+;H : cymbal & Tom-tom
+
+;G track Volume setting
+;  v(0,1,2...,15) : Snare / @(14,13,12...,0,15) : Hi Hat
+;H track Volume setting
+;  v(0,1,2...,15) : cymbal / @(14,13,12...,0,15) : Tom-tom
+
+F   y14,35 so q1 l16    r1 v15     @e31         ;Drums (OPLL) 
+G          so q5 l16 o1 r1 v11 @14              ;Drums (OPLL) 
+H          so q1 l32    r1 v15 @15 @e31    \12  ;Drums (OPLL) 
+1             q8 l16 o1 r1 v13          k0      ;Drums (PSG) 
+2             q8 l16 o1 r1 
+
+;*-*-* Glissando *-*-*
+
+;A
+6       @e02 d_<<b2^8&b_f+4.       ;& f+_c+4.&(7c+_<g2^8 
+7       @e02 c_<<a2^8&a_e4.& e_d12 ;& e_<b4.&(7b_f+2^8 
+8   @08 @e31 g_<e2^8&)2e_<b4.&)2 b_f+4.&)f+_d2^8&(4 d_<f+1 
+D   @16 @e31 d_<d1&          d_<b4.&b_f+2^8 ;& @17 @e31 >f+_c1 
+E   @16 @e31 g_<e2^8&e_<b4.& b_f+4.&f+_d2^8 & @17 @e31 >d_<a12 ;& @17 @e31 >d_<f+1 
+
+;*-*-* Lead *-*-*
+
+;A
+6   l6 o3 v13 @\2
+7   l6 o3 v13 @\-25
+6   @e12 f+a>cegb> 
+7   @e12 gb>df+a>c 
+;B
+6   @e13 v11
+7   @e14 v11
+D   @6  @e08 l6 o6 v12 @\40
+E   @6  @e08 l6 o6 v12 @\0
+67D     [0
+67DE    [ d4^<b12g2&
+67DE    g4d4gb>d c+4^g2^12&
+67DE    g1 c4^g2^12&g2c4d4
+67D c4^<b2^12& b2.& [2 (b12& ] (b12 )3 > ]
+E   c4^<b2^12& b2.& | [2 (b12& ] (b12 )3 > ] (b12&(b%12 )2 >
+;C
+6   v11 @\5
+7   v10
+D   v12
+67D < [ a4^>e12e2& e4& [2 (e12& ] (e12 )3 e8& (e12&(e24 )2 f+8& (f+12&(f+24 )2
+67D g4^ (6 [3 d48&)2 ] d48d2& d2.& [2 (d12& ] (d12 )3
+67D <a4^>e12e2& | e2.& [2 (e12& ] (e12 )3
+67D g2f+2 e2d2 < ]
+67D e4& [2 (e12& ] (e12 )3 e4f+4
+67D g2& [3 (g12& ] (g8&(g8 )5 >c4^< (6 [3 b48&)2 ] b48&b4a4
+67D b1& b4.& (b12&(b24 )2 d8&& (d12&(d24 )2 b4
+67D a1& a4& [2 (a12& ] (a12 )3 g4f+4 g1&
+67D g1& g1&
+67D g1
+6   v11 @\2
+7   v11
+D   v12
+67D ]
+
+;B
+8   [15 r1 ]
+;C
+8   @23 @e15 l6 o5 v2  @\-15
+E   @6  @e08 l6 o6 v10 @\25
+8E  [0
+8E  [ a4^>e12e2& e4& (e8&(e8 )2 e8& (e8 )1 f+8& (f+8 )1
+8E  g4^ (4 [2 d48&)2 ] d48&d48d2& d2.& (d8&(d8 )2
+8E  <a4^>e12e2& | e2.& (e8&(e8 )2
+8E  g2f+2 e2d2 < ]
+8E  e4& (e8&(e8 )2 e4f+4
+8E  g2& (g8&(g8&(g4 )3 >c4^< (4 [2 b48&)2 ] b48&b48&b4a4
+8E  b1& b4.& (b12&(b24 )2 d8&& (d12&(d24 )2 b4
+8E  a1& a4& (a8&(a8 )2 g4f+4 g1&
+8E  g1& g1&
+8E  g1
+;B'
+8E  [ d1& d2dd (4 [2 d48&)2 ] d48&d48&d12
+8E  d4^ (4 [2 c+48&)2 ] c+48&c+48c+2& c+1
+8E  c1& c2c4d4
+8E  c4^<b2^12& b1> ] <
+8E  ]
+
+;*-*-* Sub Lead *-*-*
+
+;A
+9   v15 h0,1,2,1 
+A   v15 h0,2,1,1
+9   d32 (3 d2....&   d1 
+A   f+32 (3 f+2....& f+1 
+;B
+9A  @17 @e06
+9   <b2.^12b12b12 b1 
+A   d2.^12d12d12  d1 
+9   a1&  a1 
+A   c+1& c+1 
+9   g1 g2gg 
+A   c1 c2cd 
+9   g^6g12g2&  g1 
+A   c^6<b12b2& b1 
+9   b2.^12b12b12  b2^6g6b6 
+A   >d2.^12d12d12 d2^6<b6>d6 
+9   a1&  a2>c+c+ 
+A   c+1& c+2ef+
+9   c^6<g12g2& g2gg
+A   g^6c12c2&  c2cd
+9   g^6g12g2&  g1
+A   c^6<b12b2& b1
+;C
+9A  [0
+9        )2 a32a8..^6>e12e2& e2ef+
+A   @\15    a6a^6>e12e2&     e2ef+ 
+9A  g^6d12d2& d1
+9A  <a^6>e12e2& e1
+9A  g2f+2 e2d2
+9A  <a^6>e12e2& e2ef+
+9A  g^6d12d2& d1
+9A  <a^6>e12e2&
+9   e2ef+  g1
+A   e2ef+& f+1
+9A  >c^6<b^12a b1&
+9A  b2db a1&
+9   a2gf+ g^6     (2 c12c^6g12 g^6>c12c2&
+A   a2gf+ g   @\0    <g12g^6>c12 c^6g12g2&
+9   c^6<a12a^6>c12 c^6f12f2
+A   g^6f12f^6f12   f^6>c12c2
+;B'
+;9   o4 )3 b32 (3 b8..^2^12b12b12 b1
+9   o4 )3 b32 (3 b8..^2 @18 hf o4 \-1 v12 g d1
+;A   o5 )3 d32 (3 d8..^2^12d12d12  d1
+A   o5 )3 d32 (3 d8..^2 @18 hf o3 \1 v12 >>(2b16)2<<g8. >>(2f+16)2<<d2...
+;9   a2>c+2& c+1
+9   @17 @e06 ho o4 \0 v12 a2>c+ @18 hf o4 \-1 v12 a e1
+;A   c+2g2&  g1
+A   @17 @e06 ho o5 \0 v12 c+2g @18 hf o3 \1 v12 >>>(2c+16)2<<<a8. >>(2g+16)2<<e2...
+;9   <a^6>c2^12& c2gg
+9   @17 @e06 ho o4 \0 v12 a^6>c^12 @18 hf o4 \-1 v12 g c2 @17 @e06 ho o5 \0 v12 gg
+;A   c^6g2^12&   g2cd
+A   @17 @e06 ho o5 \0 v12 c^6g^12 @18 hf o3 \1 v12 >>(2b16)2<<g8. >>(2e16)2<<c.. @17 @e06 ho o5 \0 v12 cd
+;9   g^6g12g2&  g1
+9   g^6g12g @18 hf o4 \-1 v12 d c^6<b12b2
+;A   c^6<b12b2& b1
+A   c^6<b12b @18 hf o3 \1 v12 >>(2f+16)2<<d8. >>(2e16)2<<c8.^6>>(2d+16)2<<<b12b..
+;9   g2.^12<b12b12 b2^6g6b6
+9   @17 @e06 ho o5 \0 v12 g2.@18 hf o4 \-1 v12 g d2^6 @17 @e06 ho o4 \0 v12 g6b6
+;A   >d2.^12d12d12 d2^6<b6>d6
+A   @17 @e06 ho o5 \0 v12 d2.@18 hf o3 \1 v12 >>(2b16)2<<g8. >>(2f+16)2<<d..^6 @17 @e06 ho o4 \0 v12 b6>d6
+;9   a^6>c+2^12& c+2c+c+
+9   a^6>c+^12 @18 hf o4 \-1 v12 a e2 @17 @e06 ho o5 \0 v12 c+c+
+;A   c+^6g2^12&  g2ef+
+A   c+^6g^12 @18 hf o3 \1 v12 >>>(2c+16)2<<<a8. >>(2g+16)2<<e.. @17 @e06 ho o5 \0 v12 ef+
+;9   c^6<g12g2& g2gg
+9   c^6<g12g @18 hf o4 \-1 v12 g c2 @17 @e06 ho o4 \0 v12 gg
+;A   g^6c12c2&  c2cd
+A   g^6c12c @18 hf o3 \1 v12 >>(2b16)2<<g8. >>(2e16)2<<c.. @17 @e06 ho o5 \0 v12 cd
+;9   g^6g12g2&  g1
+9   g^6g12g @18 hf o4 \-1 v12 d c^6<b12b2
+;A   c^6<b12b2& b1
+A   c^6<b12b @18 hf o3 \1 v12 >>(2f+16)2<<d8. >>(2e16)2<<c8.^6>>(2d+16)2<<<b12b..
+9   @17 @e06 ho o4 \0 v12
+A   @17 @e06 ho o4 \0 v12
+9A  ]
+
+;*-*-* Sub *-*-*
+
+;A
+5   [ d(3e)3dad(3e)3dad(3e)3da ] 
+;B
+5   [0
+5   [ [ g>(3d)3<gag>(3d)3<gag>(3d)3<ga ] 
+5   [ g>(3e)3<gag>(3e)3<gag>(3e)3<ga ] 
+5   [ g>(3d+)3<gag>(3d+)3<gag>(3d+)3<ga ] 
+5   [ g>(3d)3<gag>(3d)3<gag> | (3d)3<ga ] (3d(2<ga)5 ]
+;C
+5   [4 [ g>(3e)3<gag>(3e)3<gag>(3e)3<ga ] |
+5   [ g>(3d)3<gag>(3d)3<gag>(3d)3<ga ] ]
+5   [ g>(3d+)3<gag>(3d+)3<gag>(3d+)3<ga ]
+5   [4 g>(3d)3<gag>(3d)3<gag>(3d)3<ga ]
+5   d+>(3c)3<d+fd+>(3c)3<d+fd+>(3c)3<d+f
+5   g>(3d+)3<gag>(3d+)3<gag>(3d+)3<ga
+5   f>(3c)3<fgf>(3c)3<fgf>(3c)3<fg
+5   fgaaa+>ccdd+d+fg <
+5   ]
+
+;A
+B   dddd dd^12d^6 
+;B
+B   [0
+B   [16 gggg ]
+;C
+B   < [ aaaa ]
+B   [ gggg ]
+B   [ cccc ]
+B   [ dddd ]
+B   [ aaaa ]
+B   [ gggg ]
+B   [4 cccc ]
+B   [ gggg ]
+B   [ dddd ]
+B   [ cccc ]
+B   [ ffff ] >
+B   ]
+
+;A
+C   dddd dd^12d^6 
+;B
+C   [0
+C   [16 gggg ] 
+;C
+C   >> [ cccc ]
+C   [ gggg ]
+C   < [ cccc ]
+C   [ dddd ]
+C   > [ cccc ]
+C   [ gggg ]
+C   [ cccc ]
+C   [ d+d+d+d+ ]
+C   [4 dddd ]
+C   < [ cccc ]
+C   ffff
+C   l12 (2 r24fgaaa+>ccdd+d+fg24 l4 )2 <<
+C   ]
+
+;*-*-* Bass *-*-*
+
+;A
+34  [4 d6d ]
+34  [4 ddd ]
+;B
+34  [0
+34  [62 g6g ] [2 ggg ]
+34  [8 a6a ]
+34  [8 g6g ]
+34  > [8 c6c ]
+34  [8 d6d ]
+34  < [8 a6a ]
+34  [8 g6g ]
+34  > [16 c6c ]
+34  < [8 g6g ]
+34  [8 d6d ]
+34  [8 c6c ]
+34  [6 f6f ] [2 fff ]
+34  ]
+
+;*-*-* Drums *-*-*
+
+;A
+F   *q10*q10*q10*q10*w15*w20*t20*t20*t20*m15*m20 *t20*t15*m20*m15*l20*l20*l20*x20*x20*x20 
+G   *q11*q11*q11*q11*w16*w21*t21*t21*t21*m16*m21 *t21*t16*m21*m16*l21*l21*l21*x21*x21*x21 
+H   *q12*q12*q12*q12*w17*w22*t22*t22*t22*m17*m22 *t22*t17*m22*m17*l22*l22*l22*x22*x22*x22 
+1   *q13*q13*q13*q13*w18*w23*t23*t23*t23*m18*m23 *t23*t18*m23*m18*l23*l23*l23*x23*x23*x23 
+2   *b04            *b04    *b04        *b04     *b04    *b04    *b04        *b19    *b24 
+
+;B
+F   [2 [7 *b00    *s00    *b15*b20   *s00     ] 
+G   [2 [7 *h16*h21*s16*h21*h16*h21 | *s16*h21 ] *s21*h21*h21 
+H   [2 [7 *b02    *s02    *b17*b22   *s02     ] 
+1   [2 [7 *h18*h23*s18*h23*h18*h23   *s18*h23 ] 
+2   [2 [7 *b04    r4      *b19*b24   r4       ] 
+
+F   *m15*m15*m20*m20*z15*z15*z20*z20 ] 
+G   *m16*m16*m21*m21*z16*z16*z21*z21 ] 
+H   *m17*m17*m22*m22*z17*z17*z22*z22 ] 
+1   *m18*m18*m23*m23*z18*z18*z23*z23 ] 
+2   *b04    r4      *b19*b24r4       ] 
+
+;C
+FGH12   [0
+F   [2 *b00*s00*b15*b20*s00 r6  *b20*s00*b15*b20 | *s00 ] *l15r12 
+G   [2 *o01*s01*o01    *s01 *o01    *s01*o01       *s01 ] 
+H   [2 *b02*s02*b17*b22*s02 r6  *b22*s02*b17*b22 | *s02 ] *l17r12 
+1   [2 *o03*s03*o03    *s03 *o03    *s03*o03       *s03 ] 
+2   [2 *b04r4  *b19*b24r4   r6  *b24r4  *b19*b24   r4   ] 
+
+F   [4 *b00*s00*b15*b20*s00 r6  *b20*s00*b15*b20 | *s00 ] *l15r12 
+G   [4 *o01*s01*o01    *s01 *o01    *s01*o01       *s01 ] 
+H   [4 *b02*s02*b17*b22*s02 r6  *b22*s02*b17*b22 | *s02 ] *l17r12 
+1   [4 *o03*s03*o03    *s03 *o03    *s03*o03       *s03 ] 
+2   [4 *b04r4  *b19*b24r4   r6  *b24r4  *b19*b24   r4   ] 
+
+F   [4 *b00*s00*b15*b20*s00 r6  *b20 | *s00*b15*b20*s00 ] *s15*b20*b15*b20*s00 
+G   [4 *o01*s01*o01    *s01 *o01       *s01*o01    *s01 ] 
+H   [4 *b02*s02*b17*b22*s02 r6  *b22 | *s02*b17*b22*s02 ] *s17*b22*b17*b22*s02 
+1   [4 *o03*s03*o03    *s03 *o03       *s03*o03    *s03 ] 
+2   [4 *b04r4  *b19*b24r4   r6  *b24 | r4  *b19*b24r4   ] r6  *b24*b19*b24r4 
+
+F   [2 *b00*s00*b15*b20*s00 ]
+G   [2 *o01*s01*o01    *s01 ]
+H   [2 *b02*s02*b17*b22*s02 ]
+1   [2 *o03*s03*o03    *s03 ]
+2   [2 *b04r4  *b19*b24r4   ]
+
+F   *t25*t25*m30*m30*m15*m15*l30*l30
+G   *t26*t26*m31*m31*m16*m16*l31*l31
+H   *t27*t27*m32*m32*m17*m17*l32*l32
+1   *t28*t28*m33*m33*m18*m18*l33*l33
+2   r1
+
+F   *w20*w20*w20*t20*t20*t20*m20*m20*m20*l20*l20*l20
+G   *w21*w21*w21*t21*t21*t21*m21*m21*m21*l21*l21*l21
+H   *w22*w22*w22*t22*t22*t22*m22*m22*m22*l22*l22*l22
+1   *w23*w23*w23*t23*t23*t23*m23*m23*m23*l23*l23*l23
+2   r1
+
+;B'
+F   [8 *b00    *s00    *b15*b20 | *s00     ] *t20*l15
+G   [8 *h16*h21*s16*h21*h16*h21 | *s16*h21 ] *t21*l16
+H   [8 *b02    *s02    *b17*b22 | *s02     ] *t22*l17
+1   [8 *h18*h23*s18*h23*h18*h23 | *s18*h23 ] *t23*l18
+2   [8 *b04    r4      *b19*b24   r4       ] 
+
+F   [7 *b00    *s00    *b15*b20*s00     ]
+G   [7 *h16*h21*s16*h21*h16*h21*s16*h21 ]
+H   [7 *b02    *s02    *b17*b22*s02     ]
+1   [7 *h18*h23*s18*h23*h18*h23*s18*h23 ]
+2   [7 *b04    r4      *b19*b24r4       ]
+
+F   *b15*b20*s15*l30*l15*l20*t20*l15
+G   *h16*h21*s16*l31*l16*l21*t21*l16
+H   *b17*b22*s17*l32*l17*l22*t22*l17
+1   *h18*h23*s18*l33*l18*l23*t23*l18
+2   *b19*b24r4      *b04    *b04
+
+FGH12   ]
+
+#end
