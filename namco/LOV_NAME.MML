@@ -1,0 +1,105 @@
+;[gain=1.0 name=LOV_NAME duration=300s fade=5s cpu=0 lpf=0]
+; The line above defines extra options, works only on msxplay.com
+; name    : Name of mml, use as the base download filename.
+; gain    : Volume gain. (default: 1.0)
+; duration: Maxiumum play duration. (default: 300s)
+; fade    : Time of fading out. (default: 5s)
+; cpu     : CPU speed ratio. 0:auto, 1:3.58MHz (default: 0)
+; lpf     : Low-pass filter. 0:off, 1:on (default: 0)
+; loop    : Number of global loops. (default: 2).
+;           Note that duration takes precedence over loop.
+
+; Version 1.00
+
+#opll_mode  0
+#machine_id 2
+#lfo_mode   0
+#title  {   "namco - ワルキューレの伝説 - 17 - << ネームエントリー >>"
+            "MGS Arrange by Takawo"    }
+
+#alloc {
+        0 = 100,
+        9 = 100,
+        A = 100,
+        B = 100,
+        C = 100,
+        D = 100,
+        E = 100,
+        F = 100,
+        G = 100 }
+
+#tempo      76
+
+;*-*-* Tone setting
+
+@e00 = { ,,@0f@10fb=30.a }
+@e01 = { ,,efa=30 }
+
+@e30 = { ,,0 } ;Compulsion 0db
+@e31 = { ,,f } ;Clear Envelope
+
+@#15 = 0
+
+@v16 = {                        ;Vibraphone
+;   TL FB
+    63, 7,
+;   AR DR SL RR KL MT AM VB EG KR DT
+    15, 5,15,15, 0, 2, 0, 0, 0, 0, 1,
+    15, 5, 7, 0, 0, 2, 0, 0, 0, 0, 0 }
+
+;*-*-* Macro settings
+
+;a1  = a%192
+;a2  = a%96
+;a4  = a%48
+;a8  = a%24
+;a16 = a%12
+;a32 = a%6
+;a64 = a%3
+
+;a3  = a%64
+;a6  = a%32
+;a12 = a%16
+;a24 = a%8
+;a48 = a%4
+
+;*x00 #4  | *x05 #8 | *x10 #16 | *x15 #32 | *x20 #8.
+;*x25 #16 | *x30 #8 | *x35 #8. (Low Volume)
+
+;*-*-* MML
+
+;*-*-* Initialization *-*-*
+
+9   @16      q8 l6  o6 v0r2 v14 		;Vibraphone 1 (OPLL) 
+A   @16      q8 l6  o6 v0r2 v14         ;Vibraphone 2 (OPLL) 
+B	@16      q8 l6  o7 v0r2 v11 \1  	;Vibraphone 1' (OPLL) 
+C   @16      q8 l6  o7 v0r2 v11 \1      ;Vibraphone 2' (OPLL) 
+D   @10 @e00 q8 l12 o5 v0r2 v14         ;Harpsichord 1 (OPLL) 
+E   @10 @e00 q8 l12 o4 v0r2 v14 @\30    ;Harpsichord 2 (OPLL) 
+F   @16 @e01 q8 l12 o6 v0r2 v8          ;Harpsichord 1' (OPLL) 
+G   @16 @e01 q8 l12 o5 v0r2 v8  @\30    ;Harpsichord 2' (OPLL) 
+
+;*-*-* Vibraphone *-*-*
+
+9B 	gggfff
+AC 	d12d>d<ad>d<g
+9B 	eeed+d+d+
+AC 	c>c<gc>c<f12
+
+9BAC	[0
+9B	gggfff
+AC	f12d>d<ad>d<g
+9B	eeed+d+d+
+AC	c>c<gc>c<f12
+9BAC	]
+
+;*-*-* Harpsichord *-*-*
+
+DFEG	[0
+DF	g2f%5g%5f%6edfed
+EG	g4>d4<f4>d4
+DF	e6cg4d+6c<g4 >
+EG	c%5d%5c%6<b>cgcd<a+>d<a+gcd
+DFEG	]
+
+#end
